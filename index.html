@@ -20,11 +20,11 @@
     <style>
         /* --- 1. CORE VARIABLES & THEME --- */
         :root {
-            --bg-color: #050505;       /* Negru profund */
-            --charcoal: #121212;       /* Charcoal pentru carduri */
+            --bg-color: #121212;       /* Dark Charcoal */
+            --charcoal: #1e1e1e;       /* Card Charcoal */
             --text-main: #e0e0e0;      
             --text-muted: #888888;     
-            --accent: #F9F7F2;         /* Pearl White */
+            --accent: #F9F7F2;         
             --border-color: #2a2a2a;
         }
 
@@ -55,9 +55,9 @@
         .text-pearl { color: var(--accent) !important; }
         .rounded-0 { border-radius: 0 !important; }
 
-        /* --- 3. NAVIGATION (Transparent & Clean) --- */
+        /* --- 3. NAVIGATION --- */
         .navbar {
-            background-color: rgba(5, 5, 5, 0.9); 
+            background-color: rgba(18, 18, 18, 0.9);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255,255,255,0.05); 
             padding: 1rem 0;
@@ -97,36 +97,34 @@
             .nav-link { font-size: 1.5rem !important; margin-bottom: 1.5rem; display: inline-block; }
         }
 
-        /* --- 4. HERO SECTION (DARK CHARCOAL - NO IMAGE) --- */
+        /* --- 4. HERO SECTION (REVENIT LA ORIGINAL) --- */
         .hero-section {
-            /* Gradient Dark Charcoal */
-            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
-            min-height: 85vh;
+            min-height: 85vh; /* Ramane inalt si pe mobil si pe desktop */
             display: flex;
             align-items: center;
-            justify-content: center; /* Centrare totală */
-            text-align: center;      /* Text centrat */
+            /* Imaginea cu overlay charcoal */
+            background: linear-gradient(180deg, rgba(18,18,18,0.5) 0%, rgba(18,18,18,1) 100%), url('images/hero.jpg'); 
+            background-size: cover;
+            /* Aliniere la baza (pt zgarie-nori) */
+            background-position: center bottom !important; 
+            background-repeat: no-repeat;
             padding-top: 60px;
             border-bottom: 1px solid var(--border-color);
         }
 
-        /* Pe mobil reducem înălțimea ca să nu fie prea mult spațiu gol */
-        @media (max-width: 768px) {
-            .hero-section { min-height: 60vh; }
-        }
-
         .btn-industrial {
-            display: inline-block;
-            background-color: transparent;
+            position: relative;
+            background-color: rgba(0,0,0,0.5);
             border: 1px solid var(--accent);
             color: var(--accent);
             border-radius: 0;
-            padding: 14px 40px;
+            padding: 14px 30px;
             font-family: 'Oswald', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
+            width: 100%;
+            max-width: 300px;
             letter-spacing: 2px;
             transition: all 0.3s;
-            margin-top: 20px;
         }
         .btn-industrial:hover {
             background-color: var(--accent);
@@ -168,12 +166,10 @@
             height: 100%;
         }
 
-        /* Responsive borders */
         .border-end-md { border-right: 1px solid var(--border-color); }
         @media (max-width: 768px) {
             .border-end-md { border-right: none; border-bottom: 1px solid var(--border-color); }
             .card { border-bottom: 2px solid var(--accent); }
-            /* Aliniem textul la stânga pe mobil în hero dacă preferi, sau lăsăm centrat */
         }
 
         /* --- 6. SHORTS GRID --- */
@@ -202,7 +198,8 @@
         
         footer {
             border-top: 1px solid var(--border-color);
-            background-color: #020202; padding: 3rem 0;
+            background-color: #0a0a0a;
+            padding: 3rem 0;
         }
 
         .map-container { min-height: 100%; }
@@ -228,7 +225,7 @@
         
         #btn-back-to-top {
             position: fixed; bottom: 20px; right: 20px; display: none;
-            background: rgba(20, 20, 20, 0.9); border: 1px solid var(--accent);
+            background: rgba(30, 30, 30, 0.9); border: 1px solid var(--accent);
             color: var(--accent); z-index: 999; border-radius: 5px;
         }
     </style>
@@ -259,15 +256,17 @@
 
     <section id="home" class="hero-section">
         <div class="container reveal">
-            <div class="row justify-content-center">
+            <div class="row">
                 <div class="col-lg-10">
                     <h1 class="display-1 fw-bold mb-3">CREATIVE CHAOS.<br>COMMERCIAL LOGIC.</h1>
-                    <p class="lead mb-4 mx-auto" style="max-width: 650px; color: #ccc; font-weight: 300;">
+                    <p class="lead mb-4" style="max-width: 600px; color: #ccc; font-weight: 300;">
                         Bridging the gap between national media broadcasting and granular e-commerce data.
                     </p>
-                    <a href="resume.pdf" target="_blank" class="btn btn-industrial">
-                        <i class="bi bi-download me-2"></i>DOWNLOAD CV
-                    </a>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="resume.pdf" target="_blank" class="btn btn-industrial">
+                            <i class="bi bi-download me-2"></i>DOWNLOAD CV
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -324,7 +323,7 @@
         </div>
     </section>
 
-    <section class="section-padding border-top border-secondary" style="background: #080808;">
+    <section class="section-padding border-top border-secondary" style="background: #0a0a0a;">
         <div class="container reveal">
             <div class="row text-center">
                 <div class="col-4 mb-0">
@@ -525,7 +524,7 @@
         </div>
     </section>
 
-    <section id="contact" class="section-padding border-top border-secondary" style="background: #080808;">
+    <section id="contact" class="section-padding border-top border-secondary" style="background: #0a0a0a;">
         <div class="container reveal">
             <div class="row">
                 <div class="col-lg-6 mb-5 mb-lg-0">
