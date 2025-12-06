@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
 
     <style>
-        /* --- DESIGN DARK / BRUTALIST --- */
+        /* --- DESIGN DARK / BRUTALIST / LIGHT PEARL --- */
         :root {
             --bg-color: #050505;
             --card-bg: #0f0f0f;
@@ -28,7 +28,11 @@
             --border-color: #2a2a2a;
         }
 
-        html { scroll-behavior: smooth; }
+        /* --- SMOOTH SCROLL OPTIMIZED --- */
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 100px; /* Opreste scroll-ul putin mai jos de meniu */
+        }
 
         body {
             background-color: var(--bg-color);
@@ -38,26 +42,26 @@
             overflow-x: hidden;
         }
 
+        /* PRELOADER */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--bg-color);
+            z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease-out;
+        }
+        .loader-text {
+            font-family: 'Oswald', sans-serif; color: var(--accent);
+            font-size: 1.5rem; letter-spacing: 5px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse { 0% {opacity:0.5;} 50% {opacity:1;} 100% {opacity:0.5;} }
+
         h1, h2, h3, h4, h5 {
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--accent) !important; 
-        }
-
-        .section-label {
-            color: var(--accent) !important;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            display: block;
-        }
-        
-        .card-subtitle-custom {
-            color: #b0b0b0 !important;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-            display: block;
         }
 
         .rounded-0 { border-radius: 0 !important; }
@@ -87,7 +91,7 @@
             text-underline-offset: 5px;
         }
 
-        /* Hero */
+        /* --- HERO SECTION --- */
         .hero-section {
             min-height: 90vh;
             display: flex;
@@ -114,7 +118,7 @@
             box-shadow: 0 0 20px rgba(249, 247, 242, 0.3);
         }
 
-        /* Cards */
+        /* --- CARDS --- */
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -193,8 +197,7 @@
         .image-link:hover::after { opacity: 1; }
 
         #btn-back-to-top {
-            position: fixed;
-            bottom: 20px; right: 20px;
+            position: fixed; bottom: 20px; right: 20px;
             display: none;
             background: var(--card-bg);
             border: 1px solid var(--accent);
@@ -204,7 +207,7 @@
         
         .text-pearl { color: var(--accent) !important; }
 
-        /* --- ANIMATII SCROLL (FADE IN) --- */
+        /* Animations */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -214,24 +217,9 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* --- PRELOADER --- */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: var(--bg-color);
-            z-index: 9999;
-            display: flex; justify-content: center; align-items: center;
-            transition: opacity 0.5s ease-out;
-        }
-        .loader-text {
-            font-family: 'Oswald', sans-serif; color: var(--accent);
-            font-size: 1.5rem; letter-spacing: 5px;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse { 0% {opacity:0.5;} 50% {opacity:1;} 100% {opacity:0.5;} }
     </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80">
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="100">
 
     <div id="preloader">
         <div class="loader-text">[ INITIALIZING SYSTEM... ]</div>
@@ -259,13 +247,11 @@
         <div class="container reveal">
             <div class="row">
                 <div class="col-lg-10">
-                    <span class="section-label">/// CLUJ-NAPOCA // MARKETING PORTFOLIO</span>
                     <h1 class="display-1 fw-bold mb-4">CREATIVE CHAOS.<br>COMMERCIAL LOGIC.</h1>
                     <p class="lead mb-5" style="max-width: 650px; color: #ddd;">
                         I bridge the gap between national media broadcasting and granular e-commerce data. A multidisciplinary marketer specializing in <strong>Content Architecture</strong>, <strong>Brand Activation</strong>, and <strong>Visual Storytelling</strong>.
                     </p>
                     <div class="d-flex gap-3 flex-wrap">
-                        <a href="#experience" class="btn btn-industrial me-2 mb-2">VIEW OPERATIONS</a>
                         <a href="resume.pdf" target="_blank" class="btn btn-outline-light rounded-0 px-4 py-2 mb-2" style="border: 1px solid #555; color: var(--accent);">
                             <i class="bi bi-download me-2"></i>DOWNLOAD CV
                         </a>
@@ -279,7 +265,6 @@
         <div class="container py-5">
             <div class="row reveal">
                 <div class="col-lg-4 mb-5">
-                    <span class="section-label">/// EXPERIENCE LOG</span>
                     <h2 class="mb-4">CAREER<br>TRAJECTORY</h2>
                     <p class="text-secondary mb-4">
                         A documented history of deploying high-impact strategies across media, e-commerce, and digital sectors.
@@ -350,7 +335,6 @@
         <div class="container py-5 reveal">
             <div class="row">
                 <div class="col-lg-12 mb-5 text-center">
-                    <span class="section-label">/// ARSENAL</span>
                     <h2>FULL STACK CAPABILITIES</h2>
                     <p class="text-secondary small">From technical SEO to creative direction.</p>
                 </div>
@@ -361,10 +345,10 @@
                         <i class="bi bi-camera-reels fs-2 text-pearl mb-3 d-block"></i>
                         <h5 class="mb-3">VISUAL ENGINEERING</h5>
                         <ul class="list-unstyled text-secondary small">
-                            <li>/// DaVinci Resolve Studio</li>
-                            <li>/// Adobe Photoshop & Lightroom</li>
-                            <li>/// Commercial Photography</li>
-                            <li>/// Video Production</li>
+                            <li>DaVinci Resolve Studio</li>
+                            <li>Adobe Photoshop & Lightroom</li>
+                            <li>Commercial Photography</li>
+                            <li>Video Production</li>
                         </ul>
                     </div>
                 </div>
@@ -373,10 +357,10 @@
                         <i class="bi bi-cpu fs-2 text-pearl mb-3 d-block"></i>
                         <h5 class="mb-3">DIGITAL INFRASTRUCTURE</h5>
                         <ul class="list-unstyled text-secondary small">
-                            <li>/// Magento E-Commerce Mgmt</li>
-                            <li>/// WordPress / CMS Architecture</li>
-                            <li>/// Technical SEO & UX Writing</li>
-                            <li>/// Email Automation Logic</li>
+                            <li>Magento E-Commerce Mgmt</li>
+                            <li>WordPress / CMS Architecture</li>
+                            <li>Technical SEO & UX Writing</li>
+                            <li>Email Automation Logic</li>
                         </ul>
                     </div>
                 </div>
@@ -385,10 +369,10 @@
                         <i class="bi bi-graph-up-arrow fs-2 text-pearl mb-3 d-block"></i>
                         <h5 class="mb-3">GROWTH STRATEGY</h5>
                         <ul class="list-unstyled text-secondary small">
-                            <li>/// Consumer Psychology</li>
-                            <li>/// TikTok Creator Marketplace</li>
-                            <li>/// Meta Ads Manager</li>
-                            <li>/// GA4 Analysis</li>
+                            <li>Consumer Psychology</li>
+                            <li>TikTok Creator Marketplace</li>
+                            <li>Meta Ads Manager</li>
+                            <li>GA4 Analysis</li>
                         </ul>
                     </div>
                 </div>
@@ -400,7 +384,6 @@
         <div class="container py-5">
             <div class="d-flex justify-content-between align-items-end mb-5 reveal">
                 <div>
-                    <span class="section-label">/// SELECTED ROLES</span>
                     <h2>PROFESSIONAL EXPERIENCE</h2>
                 </div>
             </div>
@@ -410,7 +393,6 @@
                     <div class="card h-100">
                         <img src="images/vitacom.jpg" class="card-img-top" alt="Vitacom">
                         <div class="card-body">
-                            <p class="card-subtitle-custom">/// RETAIL & E-COMMERCE</p>
                             <h4 class="card-title">JR. MARKETING REPRESENTATIVE</h4>
                             <p class="card-text text-secondary small mb-3">AT VITACOM ELECTRONICS</p>
                             <ul class="list-unstyled text-secondary small border-top border-secondary pt-3">
@@ -442,7 +424,6 @@
                             </button>
                         </div>
                         <div class="card-body">
-                            <p class="card-subtitle-custom">/// VISUAL PRODUCTION</p>
                             <h4 class="card-title">VISUAL CONTENT SPECIALIST</h4>
                             <p class="card-text text-secondary small mb-3">AT SMILE PHOTOGRAPHY</p>
                             <ul class="list-unstyled text-secondary small border-top border-secondary pt-3">
@@ -460,7 +441,6 @@
                             <img src="images/radio.jpg" class="card-img-top" alt="Radio Impuls">
                         </a>
                         <div class="card-body">
-                            <p class="card-subtitle-custom">/// MEDIA & BROADCASTING</p>
                             <h4 class="card-title">MARKETING & RADIO INTERN</h4>
                             <p class="card-text text-secondary small mb-3">AT KANAL D / RADIO IMPULS</p>
                             <ul class="list-unstyled text-secondary small border-top border-secondary pt-3">
@@ -475,8 +455,7 @@
             
              <div class="row mt-5 reveal">
                 <div class="col-12 text-center mb-4">
-                    <span class="section-label">/// FEATURED SHORTS & REELS</span>
-                    <p class="text-secondary small">HOVER TO VIEW IN COLOR</p>
+                    <p class="text-secondary small">FEATURED SHORTS & REELS</p>
                 </div>
                 
                 <div class="col-md-4 mb-4">
@@ -506,7 +485,6 @@
 
             <div class="row mt-5 pt-5 border-top border-secondary reveal">
                 <div class="col-12 text-center mb-4">
-                    <span class="section-label">/// WORK & TRAVEL: USA</span>
                     <h4 class="text-white mt-2">INTERNATIONAL ADAPTABILITY</h4>
                     <p class="text-secondary small mx-auto" style="max-width: 600px;">
                         Documenting my journey across the United States. This experience sharpened my English proficiency, crisis management skills, and ability to adapt to fast-paced multicultural environments.
@@ -535,20 +513,18 @@
         <div class="container reveal">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center mb-4">
-                    <span class="section-label">/// CLIENT INTEL</span>
+                    <h2>CLIENT INTEL</h2>
                 </div>
             </div>
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="p-4 border border-secondary">
-                        <p class="card-subtitle-custom">/// RE: PROJECT VITACOM</p>
                         <p class="text-pearl fst-italic">"Ciprian's ability to organize complex product data into a visual hierarchy significantly improved our user experience."</p>
                         <p class="text-pearl small mb-0 fw-bold">- DIGITAL MANAGER, VITACOM</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="p-4 border border-secondary">
-                        <p class="card-subtitle-custom">/// RE: EVENT COVERAGE</p>
                         <p class="text-pearl fst-italic">"Delivered high-end visuals under extreme time pressure. The post-production turnaround was faster than any agency."</p>
                         <p class="text-pearl small mb-0 fw-bold">- EVENT DIRECTOR, SMILE</p>
                     </div>
@@ -561,7 +537,6 @@
         <div class="container py-5 reveal">
             <div class="row">
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <span class="section-label">/// TRANSMISSION</span>
                     <h2 class="display-5 mb-4">START A PROJECT</h2>
                     <p class="text-secondary mb-4">Ready to deploy? Contact me directly or send the brief.</p>
                     <p class="text-pearl fw-bold fs-4 mb-1"><i class="bi bi-telephone-fill me-2"></i>0750 270 757</p>
