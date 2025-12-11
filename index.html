@@ -58,7 +58,6 @@
         .text-pearl { color: var(--accent) !important; }
         .rounded-0 { border-radius: 0 !important; }
 
-        /* Navigation */
         .navbar {
             background-color: rgba(18, 18, 18, 0.9);
             backdrop-filter: blur(10px);
@@ -151,22 +150,23 @@
 
         .section-padding { padding-top: 4rem; padding-bottom: 4rem; }
 
-        .timeline-item {
+        /* Experience Vertical List Styling */
+        .job-item {
             position: relative;
-            padding-left: 30px;
-            border-left: 1px solid #333;
-            padding-bottom: 40px;
+            padding-left: 20px;
+            border-left: 1px solid var(--border-color);
+            margin-bottom: 3rem;
         }
-        .timeline-item::before {
-            content: ''; position: absolute; left: -6px; top: 6px;
-            width: 11px; height: 11px;
-            background: var(--bg-color); border: 1px solid var(--accent);
+        .job-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 5px;
+            width: 9px;
+            height: 9px;
+            background-color: var(--accent);
+            border-radius: 50%;
         }
-
-        /* Experience Grid Utils */
-        .bg-charcoal { background-color: var(--charcoal); }
-        .hover-lift { transition: transform 0.3s ease; }
-        .hover-lift:hover { transform: translateY(-5px); border-color: var(--accent) !important; }
 
         /* Card Styles */
         .card {
@@ -205,7 +205,7 @@
             .card { border-bottom: 2px solid var(--accent); }
         }
 
-        /* VISUALS / BENTO GRID CSS */
+        /* VISUALS / BENTO GRID */
         .visuals-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -218,15 +218,15 @@
             border: 1px solid var(--border-color);
             overflow: hidden;
             transition: all 0.3s ease;
-            height: 300px; /* Inaltime fixa pt aspect uniform */
+            height: 300px;
         }
         .visual-item:hover { border-color: var(--accent); transform: translateY(-5px); }
         
         .span-2-col { grid-column: span 2; }
-        .span-2-row { grid-row: span 2; height: 620px; } /* Pt itemul inalt */
+        /* Am scos span-2-row pentru ca am impartit in doua patrate */
 
         @media (max-width: 768px) {
-            .span-2-col, .span-2-row { grid-column: span 1; grid-row: span 1; height: 300px; }
+            .span-2-col { grid-column: span 1; height: 300px; }
         }
 
         .ad-content {
@@ -242,14 +242,12 @@
         }
         .visual-item:hover .visual-caption { opacity: 1; transform: translateY(0); }
 
-        /* Stiluri CSS pentru Concepte (Mockups) */
+        /* Concepte CSS */
         .concept-auto { background: radial-gradient(circle at 80% 50%, #4a0000 0%, #000000 70%); }
-        .concept-tourism { background: linear-gradient(to bottom, #5e4b35, #1a1510); } /* Warm Hospitality Vibe */
-        .concept-coffee { background: linear-gradient(to bottom, #0f0f0f, #1a1510); }
+        .concept-tourism { background: linear-gradient(to bottom, #5e4b35, #1a1510); } 
         .concept-arch { background: repeating-linear-gradient(45deg, #111, #111 10px, #1a1a1a 10px, #1a1a1a 20px); }
         .concept-event { background: #050505; }
         .glitch-text { text-shadow: 2px 2px 0px #00ffff, -2px -2px 0px #ff00ff; }
-        .vertical-text { writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: 8px; opacity: 0.5; }
 
         /* Shorts Grid */
         .shorts-grid {
@@ -365,7 +363,7 @@
     <section id="experience" class="section-padding">
         <div class="container">
             <div class="row reveal">
-                <div class="col-lg-5 mb-5 mb-lg-0">
+                <div class="col-lg-4 mb-5 mb-lg-0">
                     <h2 class="mb-4">CAREER<br>TRAJECTORY</h2>
                     <p class="text-secondary mb-4">
                         A documented history of deploying high-impact strategies across media, e-commerce, and digital sectors.
@@ -385,38 +383,73 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-7 ps-lg-5">
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="p-4 border border-secondary h-100 bg-charcoal position-relative hover-lift">
-                                <span class="badge bg-white text-black rounded-0 mb-3">PRESENT</span>
-                                <h4>DIGITAL STRATEGY CONSULTANT</h4>
-                                <p class="small text-pearl fw-bold mb-2">JUN 2024 - PRESENT | INDEPENDENT</p>
-                                <p class="text-secondary small mb-0">Acting as a fractional CMO for diverse clients. Focus on end-to-end brand transformation.</p>
+                <div class="col-lg-8 ps-lg-5">
+                    
+                    <div class="job-item">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h4 class="mb-1 text-white">DIGITAL STRATEGY CONSULTANT</h4>
+                                <p class="text-pearl small mb-2 fw-bold">INDEPENDENT</p>
+                            </div>
+                            <div class="col-md-3 text-md-end">
+                                <span class="text-secondary small">JUN 2024 - PRESENT</span>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="p-4 border border-secondary h-100 bg-charcoal position-relative hover-lift">
-                                <h4 class="mt-4">E-COMMERCE GROWTH</h4>
-                                <p class="small text-pearl fw-bold mb-2">FEB 2025 - JUN 2025 | VITACOM</p>
-                                <p class="text-secondary small mb-0">Managed the digital shelf and user experience for a major electronics retailer.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-4 border border-secondary h-100 bg-charcoal position-relative hover-lift">
-                                <h4 class="mt-2">BRAND ACTIVATION</h4>
-                                <p class="small text-pearl fw-bold mb-2">APR 2023 - JUN 2023 | KANAL D</p>
-                                <p class="text-secondary small mb-0">Bridging national broadcast reach with digital engagement strategies.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-4 border border-secondary h-100 bg-charcoal position-relative hover-lift">
-                                <h4 class="mt-2">VISUAL CONTENT LEAD</h4>
-                                <p class="small text-pearl fw-bold mb-2">MAR 2021 - JUN 2021 | SMILE</p>
-                                <p class="text-secondary small mb-0">Executing high-fidelity visual documentation for commercial events.</p>
-                            </div>
-                        </div>
+                        <p class="text-secondary mt-2 mb-0">Acting as a fractional CMO for diverse clients. Focus on end-to-end brand transformation.</p>
                     </div>
+
+                    <div class="job-item">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h4 class="mb-1 text-white">SOCIAL MEDIA PROJECT MANAGER</h4>
+                                <p class="text-pearl small mb-2 fw-bold">FLAMES AGENCY</p>
+                            </div>
+                            <div class="col-md-3 text-md-end">
+                                <span class="text-secondary small">AUG 2023 - MAY 2024</span>
+                            </div>
+                        </div>
+                        <p class="text-secondary mt-2 mb-0">Coordinated creative teams and managed social media campaigns for high-profile clients.</p>
+                    </div>
+
+                    <div class="job-item">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h4 class="mb-1 text-white">E-COMMERCE GROWTH</h4>
+                                <p class="text-pearl small mb-2 fw-bold">VITACOM ELECTRONICS</p>
+                            </div>
+                            <div class="col-md-3 text-md-end">
+                                <span class="text-secondary small">FEB 2025 - JUN 2025</span>
+                            </div>
+                        </div>
+                        <p class="text-secondary mt-2 mb-0">Managed the digital shelf and user experience for a major electronics retailer.</p>
+                    </div>
+
+                    <div class="job-item">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h4 class="mb-1 text-white">BRAND ACTIVATION</h4>
+                                <p class="text-pearl small mb-2 fw-bold">KANAL D / RADIO IMPULS</p>
+                            </div>
+                            <div class="col-md-3 text-md-end">
+                                <span class="text-secondary small">APR 2023 - JUN 2023</span>
+                            </div>
+                        </div>
+                        <p class="text-secondary mt-2 mb-0">Bridging national broadcast reach with digital engagement strategies.</p>
+                    </div>
+
+                    <div class="job-item border-0">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h4 class="mb-1 text-white">VISUAL CONTENT LEAD</h4>
+                                <p class="text-pearl small mb-2 fw-bold">SMILE PHOTOGRAPHY</p>
+                            </div>
+                            <div class="col-md-3 text-md-end">
+                                <span class="text-secondary small">MAR 2021 - JUN 2021</span>
+                            </div>
+                        </div>
+                        <p class="text-secondary mt-2 mb-0">Executing high-fidelity visual documentation for commercial events.</p>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -538,12 +571,9 @@
 
                 <div class="col-md-4">
                     <div class="card h-100">
-                        <a href="https://www.instagram.com/reel/CtgIxdNtN7I/" target="_blank" class="d-block position-relative">
+                        <div class="d-block position-relative">
                             <img src="images/radio.jpg" class="card-img-top" alt="Radio Impuls">
-                            <div class="position-absolute top-50 start-50 translate-middle text-white fs-1 opacity-75">
-                                <i class="bi bi-play-circle"></i>
-                            </div>
-                        </a>
+                        </div>
                         <div class="card-body p-4">
                             <h4 class="card-title h5">MARKETING INTERN</h4>
                             <p class="card-text text-secondary small mb-3">AT KANAL D / RADIO IMPULS</p>
@@ -560,6 +590,7 @@
                 <div class="col-12 text-center mb-4">
                     <p class="text-secondary small letter-spacing-2">FEATURED SHORTS & REELS</p>
                 </div>
+                
                 <div class="shorts-grid">
                     <div class="short-card">
                         <div class="ratio" style="--bs-aspect-ratio: 177.77%;">
@@ -611,12 +642,23 @@
                         </div>
                     </div>
 
-                    <div class="visual-item span-2-row">
-                        <div class="ad-content concept-coffee">
-                            <div class="vertical-text text-white">COLD BREW // ORIGINS</div>
+                    <div class="visual-item">
+                        <div class="ad-content" style="background-color: #1a1a1a; border: 1px dashed rgba(255,255,255,0.2);">
+                            <i class="bi bi-instagram fs-1 text-white mb-3"></i>
                             <div class="visual-caption">
-                                <h5 class="mb-0">SENSORY MARKETING</h5>
-                                <p class="small text-secondary mb-0">Vertical Storytelling</p>
+                                <h5 class="mb-0">INSTAGRAM GROWTH</h5>
+                                <p class="small text-secondary mb-0">Organic Reach Strategy</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visual-item">
+                        <div class="ad-content" style="background: radial-gradient(circle, #222 0%, #000 100%);">
+                            <h2 class="text-white fw-bold" style="font-size: 4rem;">50%</h2>
+                            <p class="text-secondary small letter-spacing-2">ROI INCREASE</p>
+                            <div class="visual-caption">
+                                <h5 class="mb-0">PERFORMANCE DATA</h5>
+                                <p class="small text-secondary mb-0">Analytics & Reporting</p>
                             </div>
                         </div>
                     </div>
