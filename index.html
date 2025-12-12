@@ -9,7 +9,9 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <meta property="og:title" content="Tivadar Ciprian - Portfolio">
-    <meta property="og:image" content="https://cipriaant.github.io/site-final/images/about.jpg">
+    <meta property="og:description" content="Visual Strategy, Content Production & E-commerce Growth.">
+    <meta property="og:image" content="https://cipriaant.github.io/my-portfolio/images/about.jpg">
+    <meta property="og:url" content="https://cipriaant.github.io/my-portfolio/">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -67,54 +69,18 @@
         .job-item::before { content: ''; position: absolute; left: -5px; top: 5px; width: 9px; height: 9px; background-color: var(--accent); border-radius: 50%; }
 
         /* --- MASONRY GRID --- */
-        .masonry-grid {
-            column-count: 3;
-            column-gap: 20px;
-        }
-        
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 20px;
-            position: relative;
-            background: var(--charcoal);
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-        }
-
+        .masonry-grid { column-count: 3; column-gap: 20px; }
+        .masonry-item { break-inside: avoid; margin-bottom: 20px; position: relative; background: var(--charcoal); border: 1px solid var(--border-color); overflow: hidden; transition: all 0.3s ease; border-radius: 4px; }
         .masonry-item:hover { border-color: var(--accent); transform: translateY(-3px); }
-
-        .masonry-item img, 
-        .masonry-item video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Instagram Embeds */
-        .instagram-embed-container {
-            width: 100%;
-            overflow: hidden;
-            min-height: 550px; 
-            background: #000;
-        }
-        .instagram-embed-container iframe {
-            width: 100%;
-            height: 550px;
-            border: none;
-            overflow: hidden;
-        }
-
+        .masonry-item img, .masonry-item video { width: 100%; height: auto; display: block; }
         @media (max-width: 992px) { .masonry-grid { column-count: 2; } }
         @media (max-width: 576px) { .masonry-grid { column-count: 1; } }
 
-        .visual-caption {
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            opacity: 0; transform: translateY(10px); transition: all 0.3s ease;
-            pointer-events: none;
-        }
+        /* Instagram Embeds */
+        .instagram-embed-container { width: 100%; overflow: hidden; min-height: 550px; background: #000; }
+        .instagram-embed-container iframe { width: 100%; height: 550px; border: none; overflow: hidden; }
+
+        .visual-caption { position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); opacity: 0; transform: translateY(10px); transition: all 0.3s ease; pointer-events: none; }
         .masonry-item:hover .visual-caption { opacity: 1; transform: translateY(0); }
 
         /* VLOGS LAYOUT */
@@ -186,6 +152,9 @@
             <div class="row reveal">
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <h2 class="mb-4">CAREER<br>TRAJECTORY</h2>
+                    <p class="text-secondary mb-4">
+                        Hybrid marketing specialist combining visual storytelling with 7+ years of operational leadership and discipline.
+                    </p>
                     <img src="images/about.jpg" class="img-fluid w-100 border border-secondary p-1 mb-4" style="opacity: 0.9;" alt="Tivadar Ciprian">
                     <div class="pt-4 border-top border-secondary">
                         <h5 class="mb-4">ACADEMIC BACKGROUND</h5>
@@ -200,25 +169,30 @@
                     </div>
                 </div>
                 <div class="col-lg-8 ps-lg-5">
+                    
                     <div class="job-item">
                         <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">DIGITAL STRATEGY CONSULTANT</h4><p class="text-pearl small mb-2 fw-bold">INDEPENDENT</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">JUN 2024 - PRESENT</span></div></div>
                         <p class="text-secondary mt-2 mb-0">Acting as a fractional CMO. End-to-end brand transformation.</p>
                     </div>
                     <div class="job-item">
-                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">SOCIAL MEDIA PROJECT MANAGER</h4><p class="text-pearl small mb-2 fw-bold">FLAMES AGENCY</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">AUG 2023 - MAY 2024</span></div></div>
+                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">SOCIAL MEDIA PROJECT MANAGER</h4><p class="text-pearl small mb-2 fw-bold">FLAMES AGENCY</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">JAN 2025 - FEB 2025</span></div></div>
                         <p class="text-secondary mt-2 mb-0">Coordinated creative teams and managed social media campaigns.</p>
                     </div>
                     <div class="job-item">
-                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">E-COMMERCE GROWTH</h4><p class="text-pearl small mb-2 fw-bold">VITACOM ELECTRONICS</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">FEB 2025 - JUN 2025</span></div></div>
-                        <p class="text-secondary mt-2 mb-0">Managed the digital shelf and user experience for a major electronics retailer.</p>
+                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">JR. MARKETING REPRESENTATIVE</h4><p class="text-pearl small mb-2 fw-bold">VITACOM ELECTRONICS</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">FEB 2025 - JUN 2025</span></div></div>
+                        <p class="text-secondary mt-2 mb-0">Managed the digital shelf, email campaigns, and user experience.</p>
                     </div>
                     <div class="job-item">
-                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">BRAND ACTIVATION</h4><p class="text-pearl small mb-2 fw-bold">KANAL D / RADIO IMPULS</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">APR 2023 - JUN 2023</span></div></div>
+                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">MARKETING INTERN</h4><p class="text-pearl small mb-2 fw-bold">KANAL D / RADIO IMPULS</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">APR 2023 - JUN 2023</span></div></div>
                         <p class="text-secondary mt-2 mb-0">Bridging national broadcast reach with digital engagement strategies.</p>
                     </div>
-                    <div class="job-item border-0">
-                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">VISUAL CONTENT LEAD</h4><p class="text-pearl small mb-2 fw-bold">SMILE PHOTOGRAPHY</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">MAR 2021 - JUN 2021</span></div></div>
+                    <div class="job-item">
+                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">VISUAL CONTENT INTERN</h4><p class="text-pearl small mb-2 fw-bold">SMILE PHOTOGRAPHY</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">MAR 2021 - JUN 2021</span></div></div>
                         <p class="text-secondary mt-2 mb-0">Executing high-fidelity visual documentation for commercial events.</p>
+                    </div>
+                    <div class="job-item border-0">
+                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">MANAGER / CREW</h4><p class="text-pearl small mb-2 fw-bold">MCDONALD'S</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">2017 - 2024</span></div></div>
+                        <p class="text-secondary mt-2 mb-0">Operational management, team leadership, and KPI optimization.</p>
                     </div>
                 </div>
             </div>
@@ -285,22 +259,12 @@
                 </div>
 
                 <div class="masonry-item">
-                    <video autoplay muted loop playsinline>
+                    <video autoplay muted loop playsinline preload="metadata">
                         <source src="images/reduceri.mp4" type="video/mp4">
                     </video>
                     <div class="visual-caption">
                         <h5 class="mb-0">SEASONAL SALES AD</h5>
                         <p class="small text-secondary mb-0">Vitacom Electronics</p>
-                    </div>
-                </div>
-
-                <div class="masonry-item">
-                    <video autoplay muted loop playsinline>
-                        <source src="images/matcha.mp4" type="video/mp4">
-                    </video>
-                    <div class="visual-caption">
-                        <h5 class="mb-0">PRODUCT COMMERCIAL</h5>
-                        <p class="small text-secondary mb-0">Matcha Campaign</p>
                     </div>
                 </div>
 
@@ -313,7 +277,17 @@
                 </div>
 
                 <div class="masonry-item">
-                    <video autoplay muted loop playsinline>
+                    <video autoplay muted loop playsinline preload="metadata">
+                        <source src="images/matcha.mp4" type="video/mp4">
+                    </video>
+                    <div class="visual-caption">
+                        <h5 class="mb-0">PRODUCT COMMERCIAL</h5>
+                        <p class="small text-secondary mb-0">Matcha Campaign</p>
+                    </div>
+                </div>
+
+                <div class="masonry-item">
+                    <video autoplay muted loop playsinline preload="metadata">
                         <source src="images/wakeup.mp4" type="video/mp4">
                     </video>
                     <div class="visual-caption">
@@ -346,14 +320,12 @@
                        </div>
                     </div>
                 </div>
-
                 <div class="vlogs-right">
                     <div class="vlog-card h-100">
                         <iframe src="https://www.youtube.com/embed/VD5La7QjR0w" title="USA Vlog Short" style="width:100%; height:100%; min-height: 500px; filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
