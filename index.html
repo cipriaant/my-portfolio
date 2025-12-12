@@ -66,38 +66,63 @@
         .job-item { position: relative; padding-left: 20px; border-left: 1px solid var(--border-color); margin-bottom: 3rem; }
         .job-item::before { content: ''; position: absolute; left: -5px; top: 5px; width: 9px; height: 9px; background-color: var(--accent); border-radius: 50%; }
 
-        /* --- VISUALS GRID (BENTO & LISTS) --- */
-        .visuals-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        /* Setam background negru complet pentru a ascunde marginile la "contain" */
-        .visual-item { position: relative; background: #000000; border: 1px solid var(--border-color); overflow: hidden; width: 100%; }
+        /* --- MASONRY GRID --- */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 20px;
+        }
         
-        /* Default behavior: Cover (umple tot) */
-        .visual-item img, .visual-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
-        
-        /* NOU: Clasa pentru a afisa imaginea FULL (fara crop, cu margini negre daca e cazul) */
-        .fit-full { object-fit: contain !important; }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            position: relative;
+            background: var(--charcoal);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
 
-        .visual-item:hover img, .visual-item:hover video { transform: scale(1.03); }
-        .visual-item:hover { border-color: var(--accent); }
+        .masonry-item:hover { border-color: var(--accent); transform: translateY(-3px); }
 
-        .ratio-portrait { aspect-ratio: 4 / 5; }
-        .ratio-square { aspect-ratio: 1 / 1; }
-        .ratio-landscape { aspect-ratio: 1.91 / 1; }
+        .masonry-item img, 
+        .masonry-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
-        .visual-caption { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); opacity: 0; transform: translateY(10px); transition: all 0.3s ease; }
-        .visual-item:hover .visual-caption { opacity: 1; transform: translateY(0); }
+        /* Instagram Embeds */
+        .instagram-embed-container {
+            width: 100%;
+            overflow: hidden;
+            min-height: 550px; 
+            background: #000;
+        }
+        .instagram-embed-container iframe {
+            width: 100%;
+            height: 550px;
+            border: none;
+            overflow: hidden;
+        }
 
-        /* --- SHORTS GRID --- */
-        .shorts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; justify-items: center; }
-        .short-card { width: 100%; max-width: 400px; border: 1px solid var(--border-color); padding: 5px; background: var(--charcoal); }
+        @media (max-width: 992px) { .masonry-grid { column-count: 2; } }
+        @media (max-width: 576px) { .masonry-grid { column-count: 1; } }
 
-        /* Mockup Styles */
-        .ad-content { height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; background-size: cover; background-position: center; }
-        .concept-tourism { background: linear-gradient(135deg, #1a1510 0%, #5e4b35 100%); }
+        .visual-caption {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            opacity: 0; transform: translateY(10px); transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .masonry-item:hover .visual-caption { opacity: 1; transform: translateY(0); }
 
-        /* Carousel */
-        .carousel-control-prev, .carousel-control-next { opacity: 1; width: 10%; }
-        .carousel-control-prev-icon, .carousel-control-next-icon { filter: invert(1) drop-shadow(0 0 3px black); }
+        /* VLOGS LAYOUT */
+        .vlogs-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+        .vlogs-left { display: flex; flex-direction: column; gap: 20px; }
+        .vlogs-right { height: 100%; }
+        .vlog-card { border: 1px solid var(--border-color); padding: 5px; background: var(--charcoal); height: 100%; }
+        @media (max-width: 991px) { .vlogs-layout { grid-template-columns: 1fr; } }
 
         /* Form */
         .form-control { background-color: transparent; border: none; border-bottom: 1px solid var(--border-color); border-radius: 0; color: var(--accent); padding: 15px 0; }
@@ -130,8 +155,8 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#home">HOME</a></li>
                     <li class="nav-item"><a class="nav-link" href="#experience">LOGS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#work">WORK</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#playground">CREATIVE</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#social">SOCIAL</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#commercial">COMMERCIAL</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
                 </ul>
             </div>
@@ -181,7 +206,7 @@
                     </div>
                     <div class="job-item">
                         <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">SOCIAL MEDIA PROJECT MANAGER</h4><p class="text-pearl small mb-2 fw-bold">FLAMES AGENCY</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">AUG 2023 - MAY 2024</span></div></div>
-                        <p class="text-secondary mt-2 mb-0">Coordinated creative teams and managed social media campaigns for high-profile clients.</p>
+                        <p class="text-secondary mt-2 mb-0">Coordinated creative teams and managed social media campaigns.</p>
                     </div>
                     <div class="job-item">
                         <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">E-COMMERCE GROWTH</h4><p class="text-pearl small mb-2 fw-bold">VITACOM ELECTRONICS</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">FEB 2025 - JUN 2025</span></div></div>
@@ -200,149 +225,133 @@
         </div>
     </section>
 
-    <section id="work" class="section-padding bg-black border-top border-secondary">
+    <section id="social" class="section-padding bg-black border-top border-secondary">
         <div class="container">
             <div class="mb-5 reveal text-center text-lg-start">
-                <h2 class="text-white">SELECTED CLIENT WORK</h2>
-                <p class="text-secondary small letter-spacing-2">DELIVERED PROJECTS & CASE STUDIES</p>
+                <h2 class="text-white">SOCIAL MEDIA PRODUCTION</h2>
+                <p class="text-secondary small letter-spacing-2">INSTAGRAM REELS / CONTENT CREATION</p>
             </div>
 
-            <div class="row mb-5 reveal">
-                <div class="col-12 mb-3">
-                    <h4 class="text-pearl border-bottom border-secondary pb-2 d-inline-block">01. SOCIAL VIDEO PRODUCTION</h4>
-                    <p class="text-secondary small">CLIENTS: RADIO IMPULS / FLAMES AGENCY / CANDLE LIGHTS</p>
-                </div>
-                <div class="shorts-grid">
-                    <div class="short-card">
-                        <div class="ratio" style="--bs-aspect-ratio: 177.77%;">
-                            <iframe src="https://www.youtube.com/embed/BlNbJ1lrn6c" title="Radio Reel" allowfullscreen loading="lazy" style="filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'"></iframe>
-                        </div>
-                    </div>
-                    <div class="short-card">
-                        <div class="ratio" style="--bs-aspect-ratio: 177.77%;">
-                            <iframe src="https://www.youtube.com/embed/g1AK8zJeYxg" title="Candle Reel" allowfullscreen loading="lazy" style="filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'"></iframe>
-                        </div>
-                    </div>
-                    <div class="short-card">
-                       <div class="ratio" style="--bs-aspect-ratio: 177.77%;">
-                           <iframe src="https://www.youtube.com/embed/gktDCgubcpo" title="Lights Reel" allowfullscreen loading="lazy" style="filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'"></iframe>
-                       </div>
-                   </div>
-                </div>
-            </div>
-
-            <div class="row mb-5 reveal pt-4">
-                <div class="col-12 mb-3">
-                    <h4 class="text-pearl border-bottom border-secondary pb-2 d-inline-block">02. E-COMMERCE VISUALS</h4>
-                    <p class="text-secondary small">CLIENT: VITACOM ELECTRONICS</p>
-                </div>
-                
-                <div class="col-md-6 mb-3">
-                    <div class="visual-item ratio-landscape">
-                        <img src="images/airpods.jpg" alt="AirPods Banner Campaign" class="fit-full">
-                        <div class="visual-caption">
-                            <h5 class="mb-0">TECH PRODUCT LAUNCH</h5>
-                            <p class="small text-secondary mb-0">High-End Static Banner</p>
-                        </div>
+            <div class="masonry-grid reveal">
+                <div class="masonry-item">
+                    <div class="instagram-embed-container">
+                        <iframe src="https://www.instagram.com/reel/CtgIxdNtN7I/embed" scrolling="no" allowtransparency="true"></iframe>
                     </div>
                 </div>
-
-                <div class="col-md-6 mb-3">
-                    <div class="visual-item ratio-landscape">
-                         <video autoplay muted loop playsinline class="w-100 h-100 fit-full">
-                            <source src="images/reduceri.mp4" type="video/mp4">
-                        </video>
-                        <div class="visual-caption">
-                            <h5 class="mb-0">SEASONAL SALES AD</h5>
-                            <p class="small text-secondary mb-0">Motion Graphics Promo</p>
-                        </div>
+                <div class="masonry-item">
+                    <div class="instagram-embed-container">
+                        <iframe src="https://www.instagram.com/reel/DLLDVlRBPXG/embed" scrolling="no" allowtransparency="true"></iframe>
+                    </div>
+                </div>
+                <div class="masonry-item">
+                    <div class="instagram-embed-container">
+                        <iframe src="https://www.instagram.com/reel/DMLadlARAZl/embed" scrolling="no" allowtransparency="true"></iframe>
+                    </div>
+                </div>
+                <div class="masonry-item">
+                    <div class="instagram-embed-container">
+                        <iframe src="https://www.instagram.com/reel/DMyXR32BXfQ/embed" scrolling="no" allowtransparency="true"></iframe>
+                    </div>
+                </div>
+                <div class="masonry-item">
+                    <div class="instagram-embed-container">
+                        <iframe src="https://www.instagram.com/reel/DMsw6HSxhER/embed" scrolling="no" allowtransparency="true"></iframe>
+                    </div>
+                </div>
+                <div class="masonry-item">
+                    <div class="instagram-embed-container">
+                        <iframe src="https://www.instagram.com/reel/DORgkmIj5KQ/embed" scrolling="no" allowtransparency="true"></iframe>
                     </div>
                 </div>
             </div>
-
-            <div class="row reveal pt-4">
-                <div class="col-12 mb-3">
-                    <h4 class="text-pearl border-bottom border-secondary pb-2 d-inline-block">03. EVENT PHOTOGRAPHY</h4>
-                    <p class="text-secondary small">CLIENT: SMILE PHOTOGRAPHY</p>
-                </div>
-                <div class="col-12">
-                    <div class="card bg-charcoal border border-secondary p-2">
-                        <div id="smileCarouselWork" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active"><img src="images/nunta1.jpg" class="d-block w-100 object-fit-cover" style="height: 500px;" alt="Wedding 1"></div>
-                                <div class="carousel-item"><img src="images/nunta2.jpg" class="d-block w-100 object-fit-cover" style="height: 500px;" alt="Wedding 2"></div>
-                                <div class="carousel-item"><img src="images/nunta3.jpg" class="d-block w-100 object-fit-cover" style="height: 500px;" alt="Wedding 3"></div>
-                                <div class="carousel-item"><img src="images/nunta4.jpg" class="d-block w-100 object-fit-cover" style="height: 500px;" alt="Wedding 4"></div>
-                                <div class="carousel-item"><img src="images/nunta5.jpg" class="d-block w-100 object-fit-cover" style="height: 500px;" alt="Wedding 5"></div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#smileCarouselWork" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#smileCarouselWork" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <section id="playground" class="section-padding">
+    <section id="commercial" class="section-padding">
         <div class="container">
             <div class="mb-5 reveal text-center text-lg-start">
-                <h2 class="text-white">CREATIVE PLAYGROUND</h2>
-                <p class="text-secondary small letter-spacing-2">SIDE PROJECTS / CONCEPTS / TRAVEL</p>
+                <h2 class="text-white">COMMERCIAL PROJECTS & STRATEGY</h2>
+                <p class="text-secondary small letter-spacing-2">ADS / CONCEPTS / PRODUCT VIDEO</p>
             </div>
 
-            <div class="visuals-grid reveal">
+            <div class="masonry-grid reveal">
                 
-                <div class="visual-item ratio-portrait">
-                    <video autoplay muted loop playsinline class="w-100 h-100 object-fit-cover">
+                <div class="masonry-item">
+                    <img src="images/wnt.jpg" alt="Work & Travel Banner">
+                    <div class="visual-caption">
+                        <h5 class="mb-0">TRAVEL CAMPAIGN</h5>
+                        <p class="small text-secondary mb-0">Long Format Design</p>
+                    </div>
+                </div>
+
+                <div class="masonry-item">
+                    <video autoplay muted loop playsinline>
+                        <source src="images/reduceri.mp4" type="video/mp4">
+                    </video>
+                    <div class="visual-caption">
+                        <h5 class="mb-0">SEASONAL SALES AD</h5>
+                        <p class="small text-secondary mb-0">Vitacom Electronics</p>
+                    </div>
+                </div>
+
+                <div class="masonry-item">
+                    <video autoplay muted loop playsinline>
+                        <source src="images/matcha.mp4" type="video/mp4">
+                    </video>
+                    <div class="visual-caption">
+                        <h5 class="mb-0">PRODUCT COMMERCIAL</h5>
+                        <p class="small text-secondary mb-0">Matcha Campaign</p>
+                    </div>
+                </div>
+
+                <div class="masonry-item">
+                    <img src="images/airpods.jpg" alt="AirPods">
+                    <div class="visual-caption">
+                        <h5 class="mb-0">PRODUCT LAUNCH</h5>
+                        <p class="small text-secondary mb-0">High-End Static</p>
+                    </div>
+                </div>
+
+                <div class="masonry-item">
+                    <video autoplay muted loop playsinline>
                         <source src="images/wakeup.mp4" type="video/mp4">
                     </video>
                     <div class="visual-caption">
-                        <h5 class="mb-0">VIDEO EDITING</h5>
+                        <h5 class="mb-0">VIDEO STORYTELLING</h5>
                         <p class="small text-secondary mb-0">Commercial Concept</p>
                     </div>
                 </div>
 
-                <div class="visual-item ratio-portrait">
-                    <div class="ad-content concept-tourism">
-                        <div style="border: 1px solid rgba(255,255,255,0.5); padding: 5px 15px; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; color: white;">Escape</div>
-                        <h3 class="text-white mt-3 fw-bold">LUXURY STAY</h3>
-                        <p class="text-white small opacity-75 mt-2">Book Direct</p>
-                        <div class="visual-caption"><h5 class="mb-0">HOSPITALITY CONCEPT</h5></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="extras" class="section-padding bg-black border-top border-secondary">
+        <div class="container reveal">
+            <div class="col-12 text-center mb-5">
+                <h4 class="text-white">WORK & TRAVEL VLOGS (USA)</h4>
+                <p class="text-secondary small">Documenting the journey. Editing & Storytelling.</p>
+            </div>
+            
+            <div class="vlogs-layout">
+                <div class="vlogs-left">
+                    <div class="vlog-card">
+                       <div class="ratio ratio-16x9 h-100">
+                           <iframe src="https://www.youtube.com/embed/8hSZSpLvrEY" title="USA Vlog 1" allowfullscreen loading="lazy" style="filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'"></iframe>
+                       </div>
+                    </div>
+                    <div class="vlog-card">
+                       <div class="ratio ratio-16x9 h-100">
+                           <iframe src="https://www.youtube.com/embed/UxPL3CtBMaY" title="USA Vlog 2" allowfullscreen loading="lazy" style="filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'"></iframe>
+                       </div>
                     </div>
                 </div>
 
-                <div class="visual-item ratio-square">
-                    <img src="images/ad4.jpg" alt="Concept Art">
-                    <div class="visual-caption"><h5 class="mb-0">VISUAL EXPLORATION</h5></div>
+                <div class="vlogs-right">
+                    <div class="vlog-card h-100">
+                        <iframe src="https://www.youtube.com/embed/VD5La7QjR0w" title="USA Vlog Short" style="width:100%; height:100%; min-height: 500px; filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'" frameborder="0" allowfullscreen></iframe>
+                    </div>
                 </div>
-
-            </div>
-
-            <div class="row mt-5 pt-5 border-top border-secondary reveal">
-                <div class="col-12 text-center mb-4">
-                    <h4 class="text-white mt-2">WORK & TRAVEL VLOGS (USA)</h4>
-                    <p class="text-secondary small">Documenting the journey. Editing & Storytelling.</p>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="border border-secondary p-1">
-                       <div class="ratio ratio-16x9">
-                           <iframe src="https://www.youtube.com/embed/8hSZSpLvrEY" title="USA Vlog 1" allowfullscreen loading="lazy" style="filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'"></iframe>
-                       </div>
-                   </div>
-               </div>
-               <div class="col-md-6 mb-3">
-                    <div class="border border-secondary p-1">
-                       <div class="ratio ratio-16x9">
-                           <iframe src="https://www.youtube.com/embed/UxPL3CtBMaY" title="USA Vlog 2" allowfullscreen loading="lazy" style="filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'"></iframe>
-                       </div>
-                   </div>
-               </div>
             </div>
 
         </div>
@@ -352,18 +361,12 @@
         <div class="container reveal">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="text-center mb-5">
-                        <h2 class="display-5 mb-4">START A PROJECT</h2>
-                        <p class="text-secondary mb-3">Ready to deploy? Contact me directly or send the brief.</p>
+                    <div class="text-center mb-0">
+                        <h2 class="display-5 mb-4">GET IN TOUCH</h2>
+                        <p class="text-secondary mb-4">Open to new opportunities and collaborations.</p>
                         <p class="text-pearl fw-bold fs-4 mb-2"><a href="tel:0750270757" class="text-decoration-none text-white"><i class="bi bi-telephone-fill me-2 text-muted"></i>0750 270 757</a></p>
                         <p class="text-accent mb-0"><a href="mailto:t.cipri2610@gmail.com" class="text-decoration-none text-pearl"><i class="bi bi-envelope-fill me-2 text-muted"></i>t.cipri2610@gmail.com</a></p>
                     </div>
-                    <form action="https://formspree.io/f/mldqlnbr" method="POST" class="mt-4">
-                        <div class="mb-4"><input type="text" name="name" class="form-control" placeholder="NAME / ORGANIZATION" required></div>
-                        <div class="mb-4"><input type="email" name="email" class="form-control" placeholder="EMAIL ADDRESS" required></div>
-                        <div class="mb-5"><textarea name="message" class="form-control" rows="3" placeholder="BRIEF OVERVIEW" required></textarea></div>
-                        <button type="submit" class="btn btn-industrial w-100">SEND TRANSMISSION</button>
-                    </form>
                 </div>
             </div>
         </div>
