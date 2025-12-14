@@ -30,18 +30,19 @@
         html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Roboto Mono', monospace; line-height: 1.6; overflow-x: hidden; }
 
+        /* SCROLLBAR CUSTOM */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg-color); }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
+        /* TYPOGRAPHY */
         h1, h2, h3, h4, h5 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; color: var(--accent) !important; }
         h1.display-1 { font-size: clamp(2.5rem, 8vw, 6rem); }
         h2 { font-size: clamp(1.8rem, 5vw, 3rem); }
         .text-pearl { color: var(--accent) !important; }
-        .rounded-0 { border-radius: 0 !important; }
 
-        /* Navbar */
+        /* NAVBAR */
         .navbar { background-color: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 1rem 0; }
         .navbar-brand { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--accent) !important; letter-spacing: 2px; }
         .navbar-toggler { border: none; padding: 0; box-shadow: none !important; }
@@ -53,7 +54,7 @@
             .nav-link { font-size: 1.5rem !important; margin-bottom: 1.5rem; display: inline-block; }
         }
 
-        /* Hero */
+        /* HERO SECTION */
         .hero-section { position: relative; min-height: 85vh; display: flex; align-items: center; background: linear-gradient(180deg, rgba(18,18,18,0.5) 0%, rgba(18,18,18,1) 100%), url('images/hero.jpg'); background-size: cover; background-position: center bottom !important; background-repeat: no-repeat; padding-top: 60px; }
         .hero-section::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 250px; background: linear-gradient(to bottom, transparent 0%, var(--bg-color) 100%); pointer-events: none; z-index: 1; }
         .hero-section .container { position: relative; z-index: 2; }
@@ -63,22 +64,46 @@
 
         .section-padding { padding-top: 5rem; padding-bottom: 5rem; }
 
-        /* Experience List */
+        /* EXPERIENCE LIST */
         .border-bottom { border-bottom: 1px solid var(--border-color) !important; }
         .job-item { position: relative; padding-left: 20px; border-left: 1px solid var(--border-color); margin-bottom: 3rem; }
         .job-item::before { content: ''; position: absolute; left: -5px; top: 5px; width: 9px; height: 9px; background-color: var(--accent); border-radius: 50%; }
 
-        /* --- MASONRY GRID --- */
+        /* --- REELS HORIZONTAL CAROUSEL --- */
+        .reels-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 0; 
+            scroll-snap-type: x mandatory; 
+            -webkit-overflow-scrolling: touch; 
+            cursor: grab;
+        }
+        .reels-carousel::-webkit-scrollbar { height: 6px; }
+        .reels-carousel::-webkit-scrollbar-track { background: #111; }
+        .reels-carousel::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+        .reel-card {
+            flex: 0 0 300px;
+            background: #000;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            scroll-snap-align: center;
+            transition: transform 0.3s ease;
+        }
+        @media (max-width: 768px) { .reel-card { flex: 0 0 260px; } }
+        .reel-card:hover { border-color: var(--accent); }
+        .reel-card .instagram-embed-container { min-height: 530px; }
+        .reel-card iframe { height: 530px !important; }
+
+        /* --- MASONRY GRID (COMMERCIAL) --- */
         .masonry-grid { column-count: 3; column-gap: 20px; }
         .masonry-item { break-inside: avoid; margin-bottom: 20px; position: relative; background: var(--charcoal); border: 1px solid var(--border-color); overflow: hidden; transition: all 0.3s ease; border-radius: 4px; }
         .masonry-item:hover { border-color: var(--accent); transform: translateY(-3px); }
         .masonry-item img, .masonry-item video { width: 100%; height: auto; display: block; }
         @media (max-width: 992px) { .masonry-grid { column-count: 2; } }
         @media (max-width: 576px) { .masonry-grid { column-count: 1; } }
-
-        /* Instagram Embeds */
-        .instagram-embed-container { width: 100%; overflow: hidden; min-height: 550px; background: #000; }
-        .instagram-embed-container iframe { width: 100%; height: 550px; border: none; overflow: hidden; }
 
         .visual-caption { position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); opacity: 0; transform: translateY(10px); transition: all 0.3s ease; pointer-events: none; }
         .masonry-item:hover .visual-caption { opacity: 1; transform: translateY(0); }
@@ -90,10 +115,7 @@
         .vlog-card { border: 1px solid var(--border-color); padding: 5px; background: var(--charcoal); height: 100%; }
         @media (max-width: 991px) { .vlogs-layout { grid-template-columns: 1fr; } }
 
-        /* Form */
-        .form-control { background-color: transparent; border: none; border-bottom: 1px solid var(--border-color); border-radius: 0; color: var(--accent); padding: 15px 0; }
-        .form-control:focus { background-color: transparent; color: var(--accent); border-bottom: 1px solid var(--accent); box-shadow: none; }
-        
+        /* ANIMATIONS & EXTRAS */
         footer { border-top: 1px solid var(--border-color); background-color: #0a0a0a; padding: 3rem 0; }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -171,16 +193,16 @@
                 <div class="col-lg-8 ps-lg-5">
                     
                     <div class="job-item">
-                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">DIGITAL STRATEGY CONSULTANT</h4><p class="text-pearl small mb-2 fw-bold">INDEPENDENT</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">JUN 2024 - PRESENT</span></div></div>
-                        <p class="text-secondary mt-2 mb-0">Acting as a fractional CMO. End-to-end brand transformation.</p>
+                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">FREELANCE VISUAL CREATOR</h4><p class="text-pearl small mb-2 fw-bold">INDEPENDENT</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">JUN 2024 - PRESENT</span></div></div>
+                        <p class="text-secondary mt-2 mb-0">Photography, Graphic Design, Paid Ads & Email Marketing.</p>
                     </div>
                     <div class="job-item">
-                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">SOCIAL MEDIA PROJECT MANAGER</h4><p class="text-pearl small mb-2 fw-bold">FLAMES AGENCY</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">JAN 2025 - FEB 2025</span></div></div>
+                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">SOCIAL MEDIA PROJECT MANAGER (FREELANCE)</h4><p class="text-pearl small mb-2 fw-bold">FLAMES AGENCY</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">JAN 2025 - FEB 2025</span></div></div>
                         <p class="text-secondary mt-2 mb-0">Coordinated creative teams and managed social media campaigns.</p>
                     </div>
                     <div class="job-item">
                         <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">JR. MARKETING REPRESENTATIVE</h4><p class="text-pearl small mb-2 fw-bold">VITACOM ELECTRONICS</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">FEB 2025 - JUN 2025</span></div></div>
-                        <p class="text-secondary mt-2 mb-0">Managed the digital shelf, email campaigns, and user experience.</p>
+                        <p class="text-secondary mt-2 mb-0">Managed the digital shelf, email marketing campaigns, and seasonal promos.</p>
                     </div>
                     <div class="job-item">
                         <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">MARKETING INTERN</h4><p class="text-pearl small mb-2 fw-bold">KANAL D / RADIO IMPULS</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">APR 2023 - JUN 2023</span></div></div>
@@ -194,49 +216,39 @@
                         <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">MANAGER / CREW</h4><p class="text-pearl small mb-2 fw-bold">MCDONALD'S</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">2017 - 2024</span></div></div>
                         <p class="text-secondary mt-2 mb-0">Operational management, team leadership, and KPI optimization.</p>
                     </div>
+
                 </div>
             </div>
         </div>
     </section>
 
     <section id="social" class="section-padding bg-black border-top border-secondary">
-        <div class="container">
-            <div class="mb-5 reveal text-center text-lg-start">
+        <div class="container-fluid">
+            <div class="container mb-4 reveal text-center text-lg-start">
                 <h2 class="text-white">SOCIAL MEDIA PRODUCTION</h2>
-                <p class="text-secondary small letter-spacing-2">INSTAGRAM REELS / CONTENT CREATION</p>
+                <p class="text-secondary small letter-spacing-2">INSTAGRAM REELS / CONTENT CREATION <br> (Swipe to see more &rarr;)</p>
             </div>
 
-            <div class="masonry-grid reveal">
-                <div class="masonry-item">
-                    <div class="instagram-embed-container">
-                        <iframe src="https://www.instagram.com/reel/CtgIxdNtN7I/embed" scrolling="no" allowtransparency="true"></iframe>
-                    </div>
+            <div class="reels-carousel reveal">
+                <div class="reel-card">
+                    <div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/CtgIxdNtN7I/embed" scrolling="no" allowtransparency="true"></iframe></div>
                 </div>
-                <div class="masonry-item">
-                    <div class="instagram-embed-container">
-                        <iframe src="https://www.instagram.com/reel/DLLDVlRBPXG/embed" scrolling="no" allowtransparency="true"></iframe>
-                    </div>
+                <div class="reel-card">
+                    <div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DLLDVlRBPXG/embed" scrolling="no" allowtransparency="true"></iframe></div>
                 </div>
-                <div class="masonry-item">
-                    <div class="instagram-embed-container">
-                        <iframe src="https://www.instagram.com/reel/DMLadlARAZl/embed" scrolling="no" allowtransparency="true"></iframe>
-                    </div>
+                <div class="reel-card">
+                    <div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DMLadlARAZl/embed" scrolling="no" allowtransparency="true"></iframe></div>
                 </div>
-                <div class="masonry-item">
-                    <div class="instagram-embed-container">
-                        <iframe src="https://www.instagram.com/reel/DMyXR32BXfQ/embed" scrolling="no" allowtransparency="true"></iframe>
-                    </div>
+                <div class="reel-card">
+                    <div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DMyXR32BXfQ/embed" scrolling="no" allowtransparency="true"></iframe></div>
                 </div>
-                <div class="masonry-item">
-                    <div class="instagram-embed-container">
-                        <iframe src="https://www.instagram.com/reel/DMsw6HSxhER/embed" scrolling="no" allowtransparency="true"></iframe>
-                    </div>
+                <div class="reel-card">
+                    <div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DMsw6HSxhER/embed" scrolling="no" allowtransparency="true"></iframe></div>
                 </div>
-                <div class="masonry-item">
-                    <div class="instagram-embed-container">
-                        <iframe src="https://www.instagram.com/reel/DORgkmIj5KQ/embed" scrolling="no" allowtransparency="true"></iframe>
-                    </div>
+                <div class="reel-card">
+                    <div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DORgkmIj5KQ/embed" scrolling="no" allowtransparency="true"></iframe></div>
                 </div>
+                <div class="reel-card" style="flex: 0 0 50px; border: none; background: transparent;"></div>
             </div>
         </div>
     </section>
@@ -269,7 +281,7 @@
                 </div>
 
                 <div class="masonry-item">
-                    <img src="images/airpods.jpg" alt="AirPods">
+                    <img src="images/airpods.jpg" alt="Product Photography">
                     <div class="visual-caption">
                         <h5 class="mb-0">PRODUCT LAUNCH</h5>
                         <p class="small text-secondary mb-0">High-End Static</p>
@@ -311,18 +323,18 @@
                 <div class="vlogs-left">
                     <div class="vlog-card">
                        <div class="ratio ratio-16x9 h-100">
-                           <iframe src="https://www.youtube.com/embed/8hSZSpLvrEY" title="USA Vlog 1" allowfullscreen loading="lazy" style="filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'"></iframe>
+                           <iframe src="https://www.youtube.com/embed/8hSZSpLvrEY" title="USA Vlog 1" allowfullscreen loading="lazy"></iframe>
                        </div>
                     </div>
                     <div class="vlog-card">
                        <div class="ratio ratio-16x9 h-100">
-                           <iframe src="https://www.youtube.com/embed/UxPL3CtBMaY" title="USA Vlog 2" allowfullscreen loading="lazy" style="filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'"></iframe>
+                           <iframe src="https://www.youtube.com/embed/UxPL3CtBMaY" title="USA Vlog 2" allowfullscreen loading="lazy"></iframe>
                        </div>
                     </div>
                 </div>
                 <div class="vlogs-right">
                     <div class="vlog-card h-100">
-                        <iframe src="https://www.youtube.com/embed/VD5La7QjR0w" title="USA Vlog Short" style="width:100%; height:100%; min-height: 500px; filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/VD5La7QjR0w" title="USA Vlog Short" style="width:100%; height:100%; min-height: 500px;" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
