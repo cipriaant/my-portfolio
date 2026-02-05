@@ -8,11 +8,6 @@
     
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-    <meta property="og:title" content="Tivadar Ciprian - Portfolio">
-    <meta property="og:description" content="Visual Strategy, Content Production & E-commerce Growth.">
-    <meta property="og:image" content="https://cipriaant.github.io/my-portfolio/images/about.jpg">
-    <meta property="og:url" content="https://cipriaant.github.io/my-portfolio/">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -30,387 +25,208 @@
         html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Roboto Mono', monospace; line-height: 1.6; overflow-x: hidden; }
 
-        /* SCROLLBAR CUSTOM */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
         /* TYPOGRAPHY */
         h1, h2, h3, h4, h5 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; color: var(--accent) !important; }
         h1.display-1 { font-size: clamp(2.5rem, 8vw, 6rem); }
         h2 { font-size: clamp(1.8rem, 5vw, 3rem); }
-        .text-pearl { color: var(--accent) !important; }
+        .text-secondary { color: var(--text-muted) !important; }
 
         /* NAVBAR */
         .navbar { background-color: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 1rem 0; }
         .navbar-brand { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--accent) !important; letter-spacing: 2px; }
-        .navbar-toggler { border: none; padding: 0; box-shadow: none !important; }
         .nav-link { color: #999 !important; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin-left: 15px; transition: color 0.3s ease; }
         .nav-link:hover, .nav-link.active { color: var(--accent) !important; }
 
-        @media (max-width: 991px) {
-            .navbar-collapse { background-color: var(--bg-color); position: absolute; top: 100%; left: 0; right: 0; height: 100vh; padding: 2rem; border-top: 1px solid var(--border-color); text-align: center; }
-            .nav-link { font-size: 1.5rem !important; margin-bottom: 1.5rem; display: inline-block; }
-        }
-
-        /* HERO SECTION */
-        .hero-section { position: relative; min-height: 85vh; display: flex; align-items: center; background: linear-gradient(180deg, rgba(18,18,18,0.5) 0%, rgba(18,18,18,1) 100%), url('images/hero.jpg'); background-size: cover; background-position: center bottom !important; background-repeat: no-repeat; padding-top: 60px; }
-        .hero-section::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 250px; background: linear-gradient(to bottom, transparent 0%, var(--bg-color) 100%); pointer-events: none; z-index: 1; }
-        .hero-section .container { position: relative; z-index: 2; }
-
-        .btn-industrial { position: relative; background-color: rgba(0,0,0,0.5); border: 1px solid var(--accent); color: var(--accent); border-radius: 0; padding: 14px 30px; font-family: 'Oswald', sans-serif; font-size: 0.9rem; width: 100%; max-width: 300px; letter-spacing: 2px; transition: all 0.3s; }
+        /* HERO */
+        .hero-section { position: relative; min-height: 85vh; display: flex; align-items: center; background: linear-gradient(180deg, rgba(18,18,18,0.5) 0%, rgba(18,18,18,1) 100%), url('images/hero.jpg'); background-size: cover; background-position: center bottom; padding-top: 60px; }
+        .btn-industrial { background-color: rgba(0,0,0,0.5); border: 1px solid var(--accent); color: var(--accent); border-radius: 0; padding: 14px 30px; font-family: 'Oswald', sans-serif; font-size: 0.9rem; letter-spacing: 2px; transition: all 0.3s; text-decoration: none; display: inline-block; }
         .btn-industrial:hover { background-color: var(--accent); color: var(--bg-color); }
 
-        .section-padding { padding-top: 5rem; padding-bottom: 5rem; }
+        .section-padding { padding: 6rem 0; }
 
-        /* EXPERIENCE LIST */
-        .border-bottom { border-bottom: 1px solid var(--border-color) !important; }
-        .job-item { position: relative; padding-left: 20px; border-left: 1px solid var(--border-color); margin-bottom: 3rem; }
-        .job-item::before { content: ''; position: absolute; left: -5px; top: 5px; width: 9px; height: 9px; background-color: var(--accent); border-radius: 50%; }
+        /* EXPERIENCE & EDUCATION */
+        .job-item { padding-left: 20px; border-left: 1px solid var(--border-color); margin-bottom: 2.5rem; position: relative; }
+        .job-item::before { content: ''; position: absolute; left: -5px; top: 8px; width: 9px; height: 9px; background: var(--accent); border-radius: 50%; }
+        .text-pearl { color: var(--accent) !important; }
 
-        /* --- REELS HORIZONTAL CAROUSEL --- */
-        .reels-carousel {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 20px 0; 
-            scroll-snap-type: x mandatory; 
-            -webkit-overflow-scrolling: touch; 
-            cursor: grab;
-        }
+        /* REELS CAROUSEL */
+        .reels-carousel { display: flex; overflow-x: auto; gap: 20px; padding: 20px 0; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
         .reels-carousel::-webkit-scrollbar { height: 6px; }
-        .reels-carousel::-webkit-scrollbar-track { background: #111; }
         .reels-carousel::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        .reel-card { flex: 0 0 300px; background: #000; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; scroll-snap-align: center; }
+        .reel-card iframe { width: 100%; height: 530px; border: none; }
 
-        .reel-card {
-            flex: 0 0 300px;
-            background: #000;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            scroll-snap-align: center;
-            transition: transform 0.3s ease;
-        }
-        @media (max-width: 768px) { .reel-card { flex: 0 0 260px; } }
-        .reel-card:hover { border-color: var(--accent); }
-        .reel-card .instagram-embed-container { min-height: 530px; }
-        .reel-card iframe { height: 530px !important; }
-
-        /* --- MASONRY GRID (COMMERCIAL) --- */
+        /* --- TRUE MASONRY GRID --- */
         .masonry-grid { column-count: 3; column-gap: 20px; }
-        .masonry-item { break-inside: avoid; margin-bottom: 20px; position: relative; background: var(--charcoal); border: 1px solid var(--border-color); overflow: hidden; transition: all 0.3s ease; border-radius: 4px; }
-        .masonry-item:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .masonry-item { break-inside: avoid; margin-bottom: 20px; position: relative; background: var(--charcoal); border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden; transition: all 0.3s ease; }
+        .masonry-item:hover { border-color: var(--accent); transform: translateY(-5px); z-index: 2; }
         .masonry-item img, .masonry-item video { width: 100%; height: auto; display: block; }
+        .grid-caption { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent); opacity: 0; transition: 0.3s ease; }
+        .masonry-item:hover .grid-caption { opacity: 1; }
+
         @media (max-width: 992px) { .masonry-grid { column-count: 2; } }
         @media (max-width: 576px) { .masonry-grid { column-count: 1; } }
 
-        .visual-caption { position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); opacity: 0; transform: translateY(10px); transition: all 0.3s ease; pointer-events: none; }
-        .masonry-item:hover .visual-caption { opacity: 1; transform: translateY(0); }
-
-        /* VLOGS LAYOUT */
-        .vlogs-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
-        .vlogs-left { display: flex; flex-direction: column; gap: 20px; }
-        .vlogs-right { height: 100%; }
-        .vlog-card { border: 1px solid var(--border-color); padding: 5px; background: var(--charcoal); height: 100%; }
-        @media (max-width: 991px) { .vlogs-layout { grid-template-columns: 1fr; } }
-
-        /* ANIMATIONS & EXTRAS */
         footer { border-top: 1px solid var(--border-color); background-color: #0a0a0a; padding: 3rem 0; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-color); z-index: 9999; display: flex; justify-content: center; align-items: center; }
-        .loader-text { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 1.2rem; letter-spacing: 5px; animation: blink 1s infinite; }
-        @keyframes blink { 0%, 100% {opacity:1;} 50% {opacity:0.3;} }
-        
-        #btn-back-to-top { position: fixed; bottom: 20px; right: 20px; display: none; background: rgba(30, 30, 30, 0.9); border: 1px solid var(--accent); color: var(--accent); z-index: 999; border-radius: 5px; }
+        #preloader { position: fixed; inset: 0; background: var(--bg-color); z-index: 9999; display: flex; justify-content: center; align-items: center; }
     </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="100">
+<body>
 
-    <div id="preloader">
-        <div class="loader-text">SYSTEM LOADING...</div>
-    </div>
+    <div id="preloader"><div style="color:var(--accent); letter-spacing: 5px;">LOADING SYSTEM...</div></div>
 
-    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">TIVADAR CIPRIAN</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="bi bi-list text-white fs-1"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">HOME</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experience">LOGS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#social">SOCIAL</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#commercial">COMMERCIAL</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
-                </ul>
+            <div class="ms-auto d-none d-lg-flex">
+                <a href="#experience" class="nav-link">LOGS</a>
+                <a href="#social" class="nav-link">SOCIAL</a>
+                <a href="#commercial" class="nav-link">COMMERCIAL</a>
+                <a href="#contact" class="nav-link">CONTACT</a>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="hero-section">
-        <div class="container reveal">
-            <div class="row">
-                <div class="col-lg-10">
-                    <h1 class="display-1 fw-bold mb-3">CREATIVE CHAOS.<br>COMMERCIAL LOGIC.</h1>
-                    <p class="lead mb-4" style="max-width: 600px; color: #ccc; font-weight: 300;">
-                        Visual Strategist bridging the gap between media production and e-commerce data.
-                    </p>
-                    <div class="d-flex gap-3 flex-wrap">
-                        <a href="resume.pdf" target="_blank" class="btn btn-industrial">
-                            <i class="bi bi-download me-2"></i>DOWNLOAD CV
-                        </a>
-                    </div>
-                </div>
+    <section class="hero-section" id="home">
+        <div class="container">
+            <h1 class="display-1 fw-bold">CREATIVE CHAOS.<br>COMMERCIAL LOGIC.</h1>
+            <p class="lead mb-4 text-secondary" style="max-width: 600px;">Visual Strategist bridging the gap between media production and e-commerce data.</p>
+            <div class="d-flex gap-3">
+                <a href="resume.pdf" class="btn-industrial">DOWNLOAD CV</a>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="section-padding">
-        <div class="container">
-            <div class="row reveal">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h2 class="mb-4">CAREER<br>TRAJECTORY</h2>
-                    <p class="text-secondary mb-4">
-                        Hybrid marketing specialist combining visual storytelling with 7+ years of operational leadership and discipline.
-                    </p>
-                    <img src="images/about.jpg" class="img-fluid w-100 border border-secondary p-1 mb-4" style="opacity: 0.9;" alt="Tivadar Ciprian">
-                    <div class="pt-4 border-top border-secondary">
-                        <h5 class="mb-4">ACADEMIC BACKGROUND</h5>
-                        <div class="d-flex justify-content-between mb-3 border-bottom border-secondary pb-2">
-                            <span class="text-white small fw-bold">MASTER'S IN MEDIA COM.</span>
-                            <span class="text-secondary small text-end">UBB Cluj | 2025-27</span>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span class="text-white small fw-bold">BACHELOR DIGITAL MEDIA</span>
-                            <span class="text-secondary small text-end">UBB Cluj | 2021-24</span>
-                        </div>
+    <section id="experience" class="section-padding container">
+        <div class="row">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h2 class="mb-4">PROFILE</h2>
+                <img src="images/about.jpg" class="img-fluid border border-secondary p-1 mb-4" alt="Ciprian">
+                
+                <div class="mt-4">
+                    <h5 class="text-pearl mb-3">Academic Background</h5>
+                    <div class="mb-3">
+                        <p class="mb-0 fw-bold">MASTER'S IN MEDIA COM.</p>
+                        <p class="small text-secondary">UBB Cluj | 2025 - 2027</p>
+                    </div>
+                    <div class="mb-3">
+                        <p class="mb-0 fw-bold">BACHELOR DIGITAL MEDIA</p>
+                        <p class="small text-secondary">UBB Cluj | 2021 - 2024</p>
                     </div>
                 </div>
-                <div class="col-lg-8 ps-lg-5">
-                    
-                    <div class="job-item">
-                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">FREELANCE VISUAL CREATOR</h4><p class="text-pearl small mb-2 fw-bold">INDEPENDENT</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">JUN 2024 - PRESENT</span></div></div>
-                        <p class="text-secondary mt-2 mb-0">Photography, Graphic Design, Paid Ads & Email Marketing.</p>
-                    </div>
-                    <div class="job-item">
-                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">SOCIAL MEDIA PROJECT MANAGER (FREELANCE)</h4><p class="text-pearl small mb-2 fw-bold">FLAMES AGENCY</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">JAN 2025 - FEB 2025</span></div></div>
-                        <p class="text-secondary mt-2 mb-0">Coordinated creative teams and managed social media campaigns.</p>
-                    </div>
-                    <div class="job-item">
-                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">JR. MARKETING REPRESENTATIVE</h4><p class="text-pearl small mb-2 fw-bold">VITACOM ELECTRONICS</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">FEB 2025 - JUN 2025</span></div></div>
-                        <p class="text-secondary mt-2 mb-0">Managed the digital shelf, email marketing campaigns, and seasonal promos.</p>
-                    </div>
-                    <div class="job-item">
-                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">MARKETING INTERN</h4><p class="text-pearl small mb-2 fw-bold">KANAL D / RADIO IMPULS</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">APR 2023 - JUN 2023</span></div></div>
-                        <p class="text-secondary mt-2 mb-0">Bridging national broadcast reach with digital engagement strategies.</p>
-                    </div>
-                    <div class="job-item">
-                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">VISUAL CONTENT INTERN</h4><p class="text-pearl small mb-2 fw-bold">SMILE PHOTOGRAPHY</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">MAR 2021 - JUN 2021</span></div></div>
-                        <p class="text-secondary mt-2 mb-0">Executing high-fidelity visual documentation for commercial events.</p>
-                    </div>
-                    <div class="job-item border-0">
-                        <div class="row"><div class="col-md-9"><h4 class="mb-1 text-white">MANAGER / CREW</h4><p class="text-pearl small mb-2 fw-bold">MCDONALD'S</p></div><div class="col-md-3 text-md-end"><span class="text-secondary small">2017 - 2024</span></div></div>
-                        <p class="text-secondary mt-2 mb-0">Operational management, team leadership, and KPI optimization.</p>
-                    </div>
+            </div>
 
+            <div class="col-lg-8 ps-lg-5">
+                <h2 class="mb-4">Career Logs</h2>
+                
+                <div class="job-item">
+                    <h4>Freelance Visual Creator</h4>
+                    <p class="text-pearl small fw-bold">JUN 2024 - PRESENT</p>
+                    <p class="text-secondary">Specializing in Photography, Graphic Design, and Paid Ads for small-to-medium enterprises.</p>
+                </div>
+
+                <div class="job-item">
+                    <h4>Social Media Project Manager</h4>
+                    <p class="text-pearl small fw-bold">FLAMES AGENCY | JAN 2025 - FEB 2025</p>
+                    <p class="text-secondary">Coordinated creative teams and managed cross-platform content strategies.</p>
+                </div>
+
+                <div class="job-item">
+                    <h4>Jr. Marketing Representative</h4>
+                    <p class="text-pearl small fw-bold">VITACOM ELECTRONICS | FEB 2025 - JUN 2025</p>
+                    <p class="text-secondary">Managed Magento B2B/B2C platforms, SEO listing optimization, and monthly promotional campaigns.</p>
+                </div>
+
+                <div class="job-item">
+                    <h4>Marketing Intern</h4>
+                    <p class="text-pearl small fw-bold">KANAL D / RADIO IMPULS | APR 2023 - JUN 2023</p>
+                    <p class="text-secondary">Assisted in digital engagement strategies for national broadcast media.</p>
+                </div>
+
+                <div class="job-item border-0">
+                    <h4>Manager / Crew</h4>
+                    <p class="text-pearl small fw-bold">MCDONALD'S | 2017 - 2024</p>
+                    <p class="text-secondary">7 years of operational excellence, team leadership, and KPI management.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="social" class="section-padding bg-black border-top border-secondary">
-        <div class="container-fluid">
-            <div class="container mb-4 reveal text-center text-lg-start">
-                <h2 class="text-white">SOCIAL MEDIA PRODUCTION</h2>
-                <p class="text-secondary small letter-spacing-2">INSTAGRAM REELS / CONTENT CREATION <br> (Swipe to see more &rarr;)</p>
-            </div>
-
-            <div class="reels-carousel reveal">
-                <div class="reel-card">
-                    <div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/CtgIxdNtN7I/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                </div>
-                <div class="reel-card">
-                    <div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DLLDVlRBPXG/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                </div>
-                <div class="reel-card">
-                    <div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DMLadlARAZl/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                </div>
-                <div class="reel-card">
-                    <div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DMyXR32BXfQ/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                </div>
-                <div class="reel-card">
-                    <div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DMsw6HSxhER/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                </div>
-                <div class="reel-card">
-                    <div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DORgkmIj5KQ/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                </div>
-                <div class="reel-card" style="flex: 0 0 50px; border: none; background: transparent;"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="commercial" class="section-padding">
         <div class="container">
-            <div class="mb-5 reveal text-center text-lg-start">
-                <h2 class="text-white">COMMERCIAL PROJECTS & STRATEGY</h2>
-                <p class="text-secondary small letter-spacing-2">ADS / CONCEPTS / PRODUCT VIDEO</p>
-            </div>
-
-            <div class="masonry-grid reveal">
-                
-                <div class="masonry-item">
-                    <video autoplay muted loop playsinline preload="metadata">
-                        <source src="images/galaxy.mp4.mp4" type="video/mp4">
-                    </video>
-                    <div class="visual-caption">
-                        <h5 class="mb-0">PRODUCT COMMERCIAL</h5>
-                        <p class="small text-secondary mb-0">Motion Graphics & Promo</p>
-                    </div>
-                </div>
-
-                <div class="masonry-item">
-                    <img src="images/wnt.jpg" alt="Work & Travel Banner">
-                    <div class="visual-caption">
-                        <h5 class="mb-0">TRAVEL CAMPAIGN</h5>
-                        <p class="small text-secondary mb-0">Long Format Design</p>
-                    </div>
-                </div>
-
-                <div class="masonry-item">
-                    <video autoplay muted loop playsinline preload="metadata">
-                        <source src="images/reduceri.mp4" type="video/mp4">
-                    </video>
-                    <div class="visual-caption">
-                        <h5 class="mb-0">SEASONAL SALES AD</h5>
-                        <p class="small text-secondary mb-0">Vitacom Electronics</p>
-                    </div>
-                </div>
-
-                <div class="masonry-item">
-                    <img src="images/airpods.jpg" alt="Product Photography">
-                    <div class="visual-caption">
-                        <h5 class="mb-0">PRODUCT LAUNCH</h5>
-                        <p class="small text-secondary mb-0">High-End Static</p>
-                    </div>
-                </div>
-
-                <div class="masonry-item">
-                    <video autoplay muted loop playsinline preload="metadata">
-                        <source src="images/matcha.mp4" type="video/mp4">
-                    </video>
-                    <div class="visual-caption">
-                        <h5 class="mb-0">PRODUCT COMMERCIAL</h5>
-                        <p class="small text-secondary mb-0">Matcha Campaign</p>
-                    </div>
-                </div>
-
-                <div class="masonry-item">
-                    <video autoplay muted loop playsinline preload="metadata">
-                        <source src="images/wakeup.mp4" type="video/mp4">
-                    </video>
-                    <div class="visual-caption">
-                        <h5 class="mb-0">VIDEO STORYTELLING</h5>
-                        <p class="small text-secondary mb-0">Commercial Concept</p>
-                    </div>
-                </div>
-
+            <h2 class="text-white mb-4">Social Production</h2>
+            <div class="reels-carousel">
+                <div class="reel-card"><iframe src="https://www.instagram.com/reel/CtgIxdNtN7I/embed"></iframe></div>
+                <div class="reel-card"><iframe src="https://www.instagram.com/reel/DLLDVlRBPXG/embed"></iframe></div>
+                <div class="reel-card"><iframe src="https://www.instagram.com/reel/DMLadlARAZl/embed"></iframe></div>
+                <div class="reel-card"><iframe src="https://www.instagram.com/reel/DMyXR32BXfQ/embed"></iframe></div>
+                <div class="reel-card"><iframe src="https://www.instagram.com/reel/DMsw6HSxhER/embed"></iframe></div>
+                <div class="reel-card"><iframe src="https://www.instagram.com/reel/DORgkmIj5KQ/embed"></iframe></div>
             </div>
         </div>
     </section>
 
-    <section id="extras" class="section-padding bg-black border-top border-secondary">
-        <div class="container reveal">
-            <div class="col-12 text-center mb-5">
-                <h4 class="text-white">WORK & TRAVEL VLOGS (USA)</h4>
-                <p class="text-secondary small">Documenting the journey. Editing & Storytelling.</p>
+    <section id="commercial" class="section-padding container">
+        <h2 class="mb-5">Selected Works</h2>
+        <div class="masonry-grid">
+            <div class="masonry-item">
+                <video autoplay muted loop playsinline><source src="images/galaxy.mp4.mp4" type="video/mp4"></video>
+                <div class="grid-caption"><h5>Galaxy Orchid</h5><p class="small text-secondary">Motion Graphics</p></div>
             </div>
-            
-            <div class="vlogs-layout">
-                <div class="vlogs-left">
-                    <div class="vlog-card">
-                       <div class="ratio ratio-16x9 h-100">
-                           <iframe src="https://www.youtube.com/embed/8hSZSpLvrEY" title="USA Vlog 1" allowfullscreen loading="lazy"></iframe>
-                       </div>
-                    </div>
-                    <div class="vlog-card">
-                       <div class="ratio ratio-16x9 h-100">
-                           <iframe src="https://www.youtube.com/embed/UxPL3CtBMaY" title="USA Vlog 2" allowfullscreen loading="lazy"></iframe>
-                       </div>
-                    </div>
-                </div>
-                <div class="vlogs-right">
-                    <div class="vlog-card h-100">
-                        <iframe src="https://www.youtube.com/embed/VD5La7QjR0w" title="USA Vlog Short" style="width:100%; height:100%; min-height: 500px;" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
+            <div class="masonry-item">
+                <video autoplay muted loop playsinline><source src="images/wakeup.mp4" type="video/mp4"></video>
+                <div class="grid-caption"><h5>Storytelling</h5><p class="small text-secondary">Commercial Concept</p></div>
+            </div>
+            <div class="masonry-item">
+                <img src="images/wnt.jpg" alt="WNT">
+                <div class="grid-caption"><h5>Work & Travel</h5><p class="small text-secondary">Visual Campaign</p></div>
+            </div>
+            <div class="masonry-item">
+                <video autoplay muted loop playsinline><source src="images/reduceri.mp4" type="video/mp4"></video>
+                <div class="grid-caption"><h5>Seasonal Sales</h5><p class="small text-secondary">Retail Promo</p></div>
+            </div>
+            <div class="masonry-item">
+                <img src="images/airpods.jpg" alt="Airpods">
+                <div class="grid-caption"><h5>Product Photography</h5><p class="small text-secondary">Studio Setup</p></div>
+            </div>
+            <div class="masonry-item">
+                <video autoplay muted loop playsinline><source src="images/matcha.mp4" type="video/mp4"></video>
+                <div class="grid-caption"><h5>Matcha Campaign</h5><p class="small text-secondary">Product Film</p></div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section-padding border-top border-secondary" style="background: #0a0a0a;">
-        <div class="container reveal">
+    <section id="contact" class="section-padding border-top border-secondary">
+        <div class="container text-center">
+            <h2 class="mb-4">Get In Touch</h2>
+            <p class="text-secondary mb-5">Open to new opportunities and strategic collaborations.</p>
             <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="text-center mb-0">
-                        <h2 class="display-5 mb-4">GET IN TOUCH</h2>
-                        <p class="text-secondary mb-4">Open to new opportunities and collaborations.</p>
-                        <p class="text-pearl fw-bold fs-4 mb-2"><a href="tel:0750270757" class="text-decoration-none text-white"><i class="bi bi-telephone-fill me-2 text-muted"></i>0750 270 757</a></p>
-                        <p class="text-accent mb-0"><a href="mailto:t.cipri2610@gmail.com" class="text-decoration-none text-pearl"><i class="bi bi-envelope-fill me-2 text-muted"></i>t.cipri2610@gmail.com</a></p>
-                    </div>
+                <div class="col-md-4 mb-4">
+                    <div class="small text-secondary" style="font-family: 'Roboto Mono'; letter-spacing: 2px;">EMAIL</div>
+                    <a href="mailto:t.cipri2610@gmail.com" class="h5 text-white text-decoration-none">t.cipri2610@gmail.com</a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="small text-secondary" style="font-family: 'Roboto Mono'; letter-spacing: 2px;">PHONE</div>
+                    <a href="tel:0750270757" class="h5 text-white text-decoration-none">0750 270 757</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-4">
+    <footer class="py-5 text-center border-top border-secondary">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 text-md-start text-center mb-3 mb-md-0">
-                    <p class="text-muted small mb-0">© 2025 TIVADAR CIPRIAN.</p>
-                </div>
-                <div class="col-md-6 text-md-end text-center">
-                    <a href="https://www.linkedin.com/in/ciprian-tivadar-55ba44285/" target="_blank" class="social-link me-4 text-decoration-none text-muted hover-pearl">LINKEDIN</a>
-                    <a href="https://www.instagram.com/ciprr1an26?igsh=YzIydmw0aHMzNTRo&utm_source=qr" target="_blank" class="social-link text-decoration-none text-muted hover-pearl">INSTAGRAM</a>
-                </div>
+            <div class="d-flex justify-content-center gap-4 mb-3">
+                <a href="https://www.linkedin.com/in/ciprian-tivadar-55ba44285/" target="_blank" class="text-secondary text-decoration-none small">LINKEDIN</a>
+                <a href="https://www.instagram.com/ciprr1an26?igsh=YzIydmw0aHMzNTRo&utm_source=qr" target="_blank" class="text-secondary text-decoration-none small">INSTAGRAM</a>
             </div>
+            <p class="small text-secondary mb-0">© 2025 TIVADAR CIPRIAN. ALL RIGHTS RESERVED.</p>
         </div>
     </footer>
 
-    <button type="button" class="btn btn-lg" id="btn-back-to-top"><i class="bi bi-arrow-up"></i></button>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <script>
-        window.addEventListener("load", function() {
-            const preloader = document.getElementById('preloader');
-            preloader.style.opacity = '0';
-            setTimeout(() => { preloader.style.display = 'none'; }, 500);
+        window.addEventListener("load", () => {
+            document.getElementById('preloader').style.display = 'none';
         });
-        window.addEventListener('scroll', reveal);
-        function reveal(){
-            var reveals = document.querySelectorAll('.reveal');
-            for(var i = 0; i < reveals.length; i++){
-                var windowheight = window.innerHeight;
-                var revealtop = reveals[i].getBoundingClientRect().top;
-                var revealpoint = 50; 
-                if(revealtop < windowheight - revealpoint){ reveals[i].classList.add('active'); }
-            }
-        }
-        let mybutton = document.getElementById("btn-back-to-top");
-        window.onscroll = function () {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) { mybutton.style.display = "block"; } else { mybutton.style.display = "none"; }
-        };
-        mybutton.addEventListener("click", function () {
-            document.body.scrollTop = 0; document.documentElement.scrollTop = 0;
-        });
-        const navLinks = document.querySelectorAll('.nav-link');
-        const menuToggle = document.getElementById('navbarNav');
-        const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle:false});
-        navLinks.forEach((l) => { l.addEventListener('click', () => { bsCollapse.hide() }) });
     </script>
 </body>
 </html>
