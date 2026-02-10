@@ -47,7 +47,6 @@
         /* EXPERIENCE & EDUCATION */
         .job-item { padding-left: 20px; border-left: 1px solid var(--border-color); margin-bottom: 2.5rem; position: relative; }
         .job-item::before { content: ''; position: absolute; left: -5px; top: 8px; width: 9px; height: 9px; background: var(--accent); border-radius: 50%; }
-        .text-pearl { color: var(--accent) !important; }
 
         /* REELS CAROUSEL */
         .reels-carousel { display: flex; overflow-x: auto; gap: 20px; padding: 20px 0; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
@@ -56,7 +55,7 @@
         .reel-card { flex: 0 0 300px; background: #000; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; scroll-snap-align: center; }
         .reel-card iframe { width: 100%; height: 530px; border: none; }
 
-        /* --- TRUE MASONRY GRID --- */
+        /* --- MASONRY GRID (NO CROP) --- */
         .masonry-grid { column-count: 3; column-gap: 20px; }
         .masonry-item { break-inside: avoid; margin-bottom: 20px; position: relative; background: var(--charcoal); border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden; transition: all 0.3s ease; }
         .masonry-item:hover { border-color: var(--accent); transform: translateY(-5px); z-index: 2; }
@@ -64,7 +63,12 @@
         .grid-caption { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent); opacity: 0; transition: 0.3s ease; }
         .masonry-item:hover .grid-caption { opacity: 1; }
 
-        @media (max-width: 992px) { .masonry-grid { column-count: 2; } }
+        /* EXTRAS LAYOUT */
+        .vlogs-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+        .vlogs-left { display: flex; flex-direction: column; gap: 20px; }
+        .vlog-card { border: 1px solid var(--border-color); padding: 5px; background: var(--charcoal); }
+
+        @media (max-width: 992px) { .masonry-grid { column-count: 2; } .vlogs-layout { grid-template-columns: 1fr; } }
         @media (max-width: 576px) { .masonry-grid { column-count: 1; } }
 
         footer { border-top: 1px solid var(--border-color); background-color: #0a0a0a; padding: 3rem 0; }
@@ -82,6 +86,7 @@
                 <a href="#experience" class="nav-link">LOGS</a>
                 <a href="#social" class="nav-link">SOCIAL</a>
                 <a href="#commercial" class="nav-link">COMMERCIAL</a>
+                <a href="#extras" class="nav-link">EXTRAS</a>
                 <a href="#contact" class="nav-link">CONTACT</a>
             </div>
         </div>
@@ -104,7 +109,7 @@
                 <img src="images/about.jpg" class="img-fluid border border-secondary p-1 mb-4" alt="Ciprian">
                 
                 <div class="mt-4">
-                    <h5 class="text-pearl mb-3">Academic Background</h5>
+                    <h5 class="text-white mb-3" style="letter-spacing: 2px;">Academic Background</h5>
                     <div class="mb-3">
                         <p class="mb-0 fw-bold">MASTER'S IN MEDIA COM.</p>
                         <p class="small text-secondary">UBB Cluj | 2025 - 2027</p>
@@ -118,34 +123,29 @@
 
             <div class="col-lg-8 ps-lg-5">
                 <h2 class="mb-4">Career Logs</h2>
-                
                 <div class="job-item">
                     <h4>Freelance Visual Creator</h4>
-                    <p class="text-pearl small fw-bold">JUN 2024 - PRESENT</p>
+                    <p class="text-white small fw-bold">JUN 2024 - PRESENT</p>
                     <p class="text-secondary">Specializing in Photography, Graphic Design, and Paid Ads for small-to-medium enterprises.</p>
                 </div>
-
                 <div class="job-item">
                     <h4>Social Media Project Manager</h4>
-                    <p class="text-pearl small fw-bold">FLAMES AGENCY | JAN 2025 - FEB 2025</p>
+                    <p class="text-white small fw-bold">FLAMES AGENCY | JAN 2025 - FEB 2025</p>
                     <p class="text-secondary">Coordinated creative teams and managed cross-platform content strategies.</p>
                 </div>
-
                 <div class="job-item">
                     <h4>Jr. Marketing Representative</h4>
-                    <p class="text-pearl small fw-bold">VITACOM ELECTRONICS | FEB 2025 - JUN 2025</p>
+                    <p class="text-white small fw-bold">VITACOM ELECTRONICS | FEB 2025 - JUN 2025</p>
                     <p class="text-secondary">Managed Magento B2B/B2C platforms, SEO listing optimization, and monthly promotional campaigns.</p>
                 </div>
-
                 <div class="job-item">
                     <h4>Marketing Intern</h4>
-                    <p class="text-pearl small fw-bold">KANAL D / RADIO IMPULS | APR 2023 - JUN 2023</p>
+                    <p class="text-white small fw-bold">KANAL D / RADIO IMPULS | APR 2023 - JUN 2023</p>
                     <p class="text-secondary">Assisted in digital engagement strategies for national broadcast media.</p>
                 </div>
-
                 <div class="job-item border-0">
                     <h4>Manager / Crew</h4>
-                    <p class="text-pearl small fw-bold">MCDONALD'S | 2017 - 2024</p>
+                    <p class="text-white small fw-bold">MCDONALD'S | 2017 - 2024</p>
                     <p class="text-secondary">7 years of operational excellence, team leadership, and KPI management.</p>
                 </div>
             </div>
@@ -196,17 +196,34 @@
         </div>
     </section>
 
+    <section id="extras" class="section-padding bg-black border-top border-secondary">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="text-white">WORK & TRAVEL VLOGS (USA)</h2>
+                <p class="text-secondary small" style="letter-spacing: 2px;">Documenting the journey. Editing & Storytelling.</p>
+            </div>
+            <div class="vlogs-layout">
+                <div class="vlogs-left">
+                    <div class="vlog-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/8hSZSpLvrEY" allowfullscreen></iframe></div></div>
+                    <div class="vlog-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/UxPL3CtBMaY" allowfullscreen></iframe></div></div>
+                </div>
+                <div class="vlogs-right">
+                    <div class="vlog-card h-100"><iframe src="https://www.youtube.com/embed/VD5La7QjR0w" style="width:100%; height:100%; min-height: 500px;" frameborder="0" allowfullscreen></iframe></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="section-padding border-top border-secondary">
         <div class="container text-center">
             <h2 class="mb-4">Get In Touch</h2>
-            <p class="text-secondary mb-5">Open to new opportunities and strategic collaborations.</p>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mt-5">
                 <div class="col-md-4 mb-4">
-                    <div class="small text-secondary" style="font-family: 'Roboto Mono'; letter-spacing: 2px;">EMAIL</div>
+                    <div class="small text-secondary" style="letter-spacing: 2px; margin-bottom: 10px;">EMAIL</div>
                     <a href="mailto:t.cipri2610@gmail.com" class="h5 text-white text-decoration-none">t.cipri2610@gmail.com</a>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="small text-secondary" style="font-family: 'Roboto Mono'; letter-spacing: 2px;">PHONE</div>
+                    <div class="small text-secondary" style="letter-spacing: 2px; margin-bottom: 10px;">PHONE</div>
                     <a href="tel:0750270757" class="h5 text-white text-decoration-none">0750 270 757</a>
                 </div>
             </div>
@@ -215,7 +232,7 @@
 
     <footer class="py-5 text-center border-top border-secondary">
         <div class="container">
-            <div class="d-flex justify-content-center gap-4 mb-3">
+            <div class="d-flex justify-content-center gap-5 mb-4">
                 <a href="https://www.linkedin.com/in/ciprian-tivadar-55ba44285/" target="_blank" class="text-secondary text-decoration-none small">LINKEDIN</a>
                 <a href="https://www.instagram.com/ciprr1an26?igsh=YzIydmw0aHMzNTRo&utm_source=qr" target="_blank" class="text-secondary text-decoration-none small">INSTAGRAM</a>
             </div>
@@ -224,9 +241,7 @@
     </footer>
 
     <script>
-        window.addEventListener("load", () => {
-            document.getElementById('preloader').style.display = 'none';
-        });
+        window.addEventListener("load", () => { document.getElementById('preloader').style.display = 'none'; });
     </script>
 </body>
 </html>
