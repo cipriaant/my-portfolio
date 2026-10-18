@@ -23,7 +23,7 @@
             --charcoal: #1e1e1e;
             --text-main: #e0e0e0;      
             --text-muted: #888888;     
-            --accent: #F9F7F2;         
+            --accent: #F9F7F2;          
             --border-color: #2a2a2a;
         }
 
@@ -78,77 +78,61 @@
         .job-item { position: relative; padding-left: 20px; border-left: 1px solid var(--border-color); margin-bottom: 3rem; }
         .job-item::before { content: ''; position: absolute; left: -5px; top: 5px; width: 9px; height: 9px; background-color: var(--accent); border-radius: 50%; }
 
-        /* --- REELS HORIZONTAL CAROUSEL --- */
+        /* SOCIAL MEDIA CAROUSEL */
         .reels-carousel {
-            display: flex;
-            overflow-x: auto;
+            --visible-reels: 3;
+            display: grid;
+            grid-template-columns: repeat(var(--visible-reels), minmax(0, 1fr));
             gap: 20px;
-            padding: 20px 0; 
-            scroll-snap-type: x mandatory; 
-            -webkit-overflow-scrolling: touch; 
-            cursor: grab;
+            padding: 16px 0;
         }
-        .reels-carousel::-webkit-scrollbar { height: 6px; }
-        .reels-carousel::-webkit-scrollbar-track { background: #111; }
-        .reels-carousel::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
-
+        .reel-card[hidden] { display: none !important; }
+        .reels-page { align-self: center; color: #aaa; font-size: 0.8rem; }
         .reel-card {
-            flex: 0 0 300px;
+            min-width: 0;
             background: #000;
             border: 1px solid var(--border-color);
             border-radius: 8px;
             overflow: hidden;
-            scroll-snap-align: center;
-            transition: transform 0.3s ease;
+            scroll-snap-align: start;
         }
-        @media (max-width: 768px) { .reel-card { flex: 0 0 260px; } }
         .reel-card:hover { border-color: var(--accent); }
         .reel-card .instagram-embed-container { min-height: 530px; }
-        .reel-card iframe { height: 530px !important; }
-
-        /* SELECTED WORK — MASONRY */
-        .masonry-grid {
-            column-count: 3;
-            column-gap: 20px;
-        }
-
-        .masonry-item {
-            position: relative;
-            display: inline-block;
-            vertical-align: top;
-            width: 100%;
-            margin: 0 0 20px;
-            break-inside: avoid;
-            background: var(--charcoal);
+        .reel-card iframe { display: block; width: 100%; height: 530px; border: 0; }
+        .reels-controls { display: flex; gap: 12px; }
+        .reels-arrow {
+            width: 44px; height: 44px;
             border: 1px solid var(--border-color);
+            background: transparent; color: var(--accent);
+            border-radius: 50%;
+        }
+        .reels-arrow:hover:not(:disabled) { border-color: var(--accent); }
+        .reels-arrow:disabled { opacity: 0.3; cursor: default; }
+        .reels-arrow:focus-visible, .reels-carousel:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+        @media (max-width: 991px) { .reels-carousel { --visible-reels: 2; } }
+        @media (max-width: 575px) { .reels-carousel { --visible-reels: 1; } }
+
+        /* SELECTED WORK — PROPORTIONAL PUZZLE */
+        .masonry-grid { display: flex; flex-direction: column; gap: 20px; }
+        .work-row { display: flex; gap: 20px; align-items: stretch; }
+        .masonry-item {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            background: var(--charcoal);
             border-radius: 4px;
             overflow: hidden;
-            transition: border-color 0.3s ease, transform 0.3s ease;
         }
-
-        .masonry-item:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
+        .work-row .masonry-item { flex: var(--media-ratio, 1) 1 0%; }
+        .project-media { width: 100%; padding: 0; flex-shrink: 0; }
+        .project-media img, .project-media video { display: block; width: 100%; height: auto; }
+        .work-row .project-media { height: var(--row-height); }
+        .work-row .project-media img, .work-row .project-media video {
+            width: 100%; height: 100%; object-fit: contain;
         }
-
-        .masonry-item img,
-        .masonry-item video {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        .visual-caption { padding: 20px; background: var(--charcoal); }
-        .visual-caption h5 { font-size: 1.1rem; margin-bottom: 0.5rem !important; }
+        .visual-caption { padding: 14px 16px 18px; flex: 1; }
+        .visual-caption h5 { font-size: 1rem; margin-bottom: 0.5rem !important; }
         .visual-caption .text-secondary { color: #bdbdbd !important; }
-
-        @media (max-width: 992px) {
-            .masonry-grid { column-count: 2; }
-        }
-
-        @media (max-width: 576px) {
-            .masonry-grid { column-count: 1; }
-        }
 
         /* VLOGS LAYOUT */
         .vlogs-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
@@ -213,10 +197,9 @@
                     <img src="images/about.jpg" class="img-fluid w-100 border border-secondary p-1" style="opacity: 0.9;" alt="Tivadar Ciprian">
                 </div>
                 <div class="col-lg-8 ps-lg-5 about-copy">
-                    <p class="about-intro">I am an early-career creator with a background in digital media, building my path in visual direction and content strategy.</p>
-                    <p>I like turning raw ideas into something tangible, whether that means directing a shoot, catching a candid moment, or shaping a visual identity. I am resourceful, quick to adapt, and comfortable making the most of what is available.</p>
-                    <p>I care about how content looks and what it does: connecting with people and helping a brand tell its story.</p>
-                    <p>Off the clock, I explore vintage aesthetics, curate playlists, and notice the small visual details in everyday life.</p>
+                    <p class="about-intro">I’m Ciprian, a digital media graduate with experience in content creation, social media, and e-commerce. I’ve worked on everything from product listings in Magento to web banners, photography, and video editing. I enjoy the mix of creative work and practical tasks that comes with bringing a project together.</p>
+                    <p>I like figuring things out as I go, trying different approaches, and working with what I have. I’m still exploring where I want to take my career, but creating visual content is something I keep coming back to.</p>
+                    <p>Travel is a big part of my life outside work. My Work & Travel experience in the US gave me plenty of opportunities to explore, meet people, and document the places I visited through photos and videos. Some of that work lives here, alongside the projects I’ve created professionally and on my own.</p>
                 </div>
             </div>
         </div>
@@ -230,9 +213,22 @@
             </div>
 
             <div class="masonry-grid reveal">
-                
                 <div class="masonry-item">
-                    <img src="images/wnt.jpg" alt="Work & Travel Banner">
+                    <div class="project-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" aria-label="Galaxy product video">
+                            <source src="images/galaxy.mp4.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="visual-caption">
+                        <h5 class="mb-0">GALAXY — PRODUCT VIDEO</h5>
+                        <p class="small text-secondary mb-0">Motion graphics for a product promotion.</p>
+                    </div>
+                </div>
+
+                <div class="masonry-item">
+                    <div class="project-media">
+                        <img src="images/wnt.jpg" alt="Work & Travel Banner">
+                    </div>
                     <div class="visual-caption">
                         <h5 class="mb-0">WORK & TRAVEL — BANNER</h5>
                         <p class="small text-secondary mb-0">Graphic design for a travel promotion.</p>
@@ -240,25 +236,33 @@
                 </div>
 
                 <div class="masonry-item">
-                    <video autoplay muted loop playsinline preload="metadata">
-                        <source src="images/reduceri.mp4" type="video/mp4">
-                    </video>
+                    <div class="project-media">
+                        <video autoplay muted loop playsinline preload="metadata">
+                            <source src="images/reduceri.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <div class="visual-caption">
                         <h5 class="mb-0">SEASONAL SALE — VIDEO AD</h5>
                         <p class="small text-secondary mb-0">Promotional video for a seasonal sale.</p>
                     </div>
                 </div>
+
                 <div class="masonry-item">
-                    <img src="images/airpods.jpg" alt="Product Photography">
+                    <div class="project-media">
+                        <img src="images/airpods.jpg" alt="Product Photography">
+                    </div>
                     <div class="visual-caption">
                         <h5 class="mb-0">AIRPODS — PRODUCT PHOTO</h5>
                         <p class="small text-secondary mb-0">Product photography and studio setup.</p>
                     </div>
                 </div>
+
                 <div class="masonry-item">
-                    <video autoplay muted loop playsinline preload="metadata">
-                        <source src="images/matcha.mp4" type="video/mp4">
-                    </video>
+                    <div class="project-media">
+                        <video autoplay muted loop playsinline preload="metadata">
+                            <source src="images/matcha.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <div class="visual-caption">
                         <h5 class="mb-0">MATCHA — PRODUCT VIDEO</h5>
                         <p class="small text-secondary mb-0">A product-focused video featuring matcha.</p>
@@ -266,9 +270,11 @@
                 </div>
 
                 <div class="masonry-item">
-                    <video autoplay muted loop playsinline preload="metadata">
-                        <source src="images/wakeup.mp4" type="video/mp4">
-                    </video>
+                    <div class="project-media">
+                        <video autoplay muted loop playsinline preload="metadata">
+                            <source src="images/wakeup.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <div class="visual-caption">
                         <h5 class="mb-0">WAKE UP — VIDEO CONCEPT</h5>
                         <p class="small text-secondary mb-0">Commercial concept and visual storytelling.</p>
@@ -280,20 +286,26 @@
     </section>
 
     <section id="social" class="section-padding bg-black border-top border-secondary">
-        <div class="container-fluid">
-            <div class="container mb-4 reveal text-center text-lg-start">
-                <h2 class="text-white">SOCIAL MEDIA PRODUCTION</h2>
-                <p class="text-secondary small letter-spacing-2">INSTAGRAM REELS / CONTENT CREATION <br> (Swipe to see more &rarr;)</p>
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end gap-3 flex-wrap mb-3 reveal">
+                <div>
+                    <h2 id="social-title" class="text-white">SOCIAL MEDIA PRODUCTION</h2>
+                    <p class="text-secondary small mb-0">INSTAGRAM REELS / CONTENT CREATION<br>Use the arrows to see more.</p>
+                </div>
+                <div class="reels-controls">
+                    <span class="reels-page" id="reels-page" aria-live="polite" aria-atomic="true">1 / 2</span>
+                    <button type="button" class="reels-arrow" id="reels-prev" aria-label="Previous reels" aria-controls="reels-track" disabled><i class="bi bi-arrow-left" aria-hidden="true"></i></button>
+                    <button type="button" class="reels-arrow" id="reels-next" aria-label="Next reels" aria-controls="reels-track"><i class="bi bi-arrow-right" aria-hidden="true"></i></button>
+                </div>
             </div>
 
-            <div class="reels-carousel reveal">
-                <div class="reel-card"><div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/CtgIxdNtN7I/embed" scrolling="no" allowtransparency="true"></iframe></div></div>
-                <div class="reel-card"><div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DLLDVlRBPXG/embed" scrolling="no" allowtransparency="true"></iframe></div></div>
-                <div class="reel-card"><div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DMLadlARAZl/embed" scrolling="no" allowtransparency="true"></iframe></div></div>
-                <div class="reel-card"><div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DMyXR32BXfQ/embed" scrolling="no" allowtransparency="true"></iframe></div></div>
-                <div class="reel-card"><div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DMsw6HSxhER/embed" scrolling="no" allowtransparency="true"></iframe></div></div>
-                <div class="reel-card"><div class="instagram-embed-container"><iframe src="https://www.instagram.com/reel/DORgkmIj5KQ/embed" scrolling="no" allowtransparency="true"></iframe></div></div>
-                <div class="reel-card" style="flex: 0 0 50px; border: none; background: transparent;"></div>
+            <div class="reels-carousel reveal" id="reels-track" role="region" aria-labelledby="social-title" aria-roledescription="carousel" tabindex="0">
+                <div class="reel-card"><div class="instagram-embed-container"><iframe title="Instagram reel 1" src="https://www.instagram.com/reel/CtgIxdNtN7I/embed" scrolling="no" allowtransparency="true"></iframe></div></div>
+                <div class="reel-card"><div class="instagram-embed-container"><iframe title="Instagram reel 2" src="https://www.instagram.com/reel/DLLDVlRBPXG/embed" scrolling="no" allowtransparency="true"></iframe></div></div>
+                <div class="reel-card"><div class="instagram-embed-container"><iframe title="Instagram reel 3" src="https://www.instagram.com/reel/DMLadlARAZl/embed" scrolling="no" allowtransparency="true"></iframe></div></div>
+                <div class="reel-card" hidden><div class="instagram-embed-container"><iframe title="Instagram reel 4" src="https://www.instagram.com/reel/DMyXR32BXfQ/embed" scrolling="no" allowtransparency="true"></iframe></div></div>
+                <div class="reel-card" hidden><div class="instagram-embed-container"><iframe title="Instagram reel 5" src="https://www.instagram.com/reel/DMsw6HSxhER/embed" scrolling="no" allowtransparency="true"></iframe></div></div>
+                <div class="reel-card" hidden><div class="instagram-embed-container"><iframe title="Instagram reel 6" src="https://www.instagram.com/reel/DORgkmIj5KQ/embed" scrolling="no" allowtransparency="true"></iframe></div></div>
             </div>
         </div>
     </section>
@@ -401,6 +413,121 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <script>
+        // Fit original media proportions into complete rows, without cropping or padding.
+        const workGrid = document.querySelector('.masonry-grid');
+        const workCards = Array.from(workGrid.querySelectorAll('.masonry-item'));
+        let workLayoutKey = '';
+        let workFrame = 0;
+
+        function mediaRatio(card) {
+            const media = card.querySelector('img, video');
+            const width = media.naturalWidth || media.videoWidth;
+            const height = media.naturalHeight || media.videoHeight;
+            return width && height ? width / height : 0.75;
+        }
+
+        function layoutWork() {
+            const width = workGrid.clientWidth;
+            if (!width) return;
+            const gap = 20;
+            const ratios = workCards.map(mediaRatio);
+            const maxItems = width < 560 ? 1 : width < 900 ? 2 : 3;
+            const targetHeight = width < 560 ? width * 1.25 : width < 900 ? 350 : 400;
+            const length = workCards.length;
+            const costs = Array(length + 1).fill(Infinity);
+            const choices = Array(length).fill(1);
+            costs[length] = 0;
+
+            // Choose row groups that avoid excessively tall rows and narrow cards.
+            for (let start = length - 1; start >= 0; start--) {
+                let sum = 0;
+                for (let count = 1; count <= maxItems && start + count <= length; count++) {
+                    sum += ratios[start + count - 1];
+                    const height = (width - gap * (count - 1)) / sum;
+                    const narrowest = Math.min(...ratios.slice(start, start + count)) * height;
+                    const penalty = width >= 560 && narrowest < 190 ? 8 : 0;
+                    const cost = Math.pow(Math.log(height / targetHeight), 2) + penalty + costs[start + count];
+                    if (cost < costs[start]) {
+                        costs[start] = cost;
+                        choices[start] = count;
+                    }
+                }
+            }
+
+            const groups = [];
+            for (let start = 0; start < length;) {
+                const count = choices[start];
+                groups.push({ start, count });
+                start += count;
+            }
+            const key = groups.map(group => group.count).join('-');
+            if (key !== workLayoutKey) {
+                const fragment = document.createDocumentFragment();
+                groups.forEach(group => {
+                    const row = document.createElement('div');
+                    row.className = 'work-row';
+                    workCards.slice(group.start, group.start + group.count).forEach(card => row.appendChild(card));
+                    fragment.appendChild(row);
+                });
+                workGrid.replaceChildren(fragment);
+                workLayoutKey = key;
+            }
+            groups.forEach((group, index) => {
+                const sum = ratios.slice(group.start, group.start + group.count).reduce((a, b) => a + b, 0);
+                const height = (width - gap * (group.count - 1)) / sum;
+                workGrid.children[index].style.setProperty('--row-height', `${height}px`);
+            });
+            workCards.forEach((card, index) => card.style.setProperty('--media-ratio', ratios[index]));
+        }
+
+        function scheduleWorkLayout() {
+            cancelAnimationFrame(workFrame);
+            workFrame = requestAnimationFrame(layoutWork);
+        }
+        workCards.forEach(card => {
+            const media = card.querySelector('img, video');
+            media.addEventListener(media.tagName === 'VIDEO' ? 'loadedmetadata' : 'load', scheduleWorkLayout);
+        });
+        window.addEventListener('resize', scheduleWorkLayout);
+        layoutWork();
+
+        const reelsTrack = document.getElementById('reels-track');
+        const reelsPrev = document.getElementById('reels-prev');
+        const reelsNext = document.getElementById('reels-next');
+        const reelsPage = document.getElementById('reels-page');
+        const reelCards = Array.from(reelsTrack.querySelectorAll('.reel-card'));
+        let currentReelsPage = 0;
+
+        function renderReelsPage() {
+            const visible = Number(getComputedStyle(reelsTrack).getPropertyValue('--visible-reels').trim()) || 3;
+            const pages = Math.ceil(reelCards.length / visible);
+            currentReelsPage = Math.max(0, Math.min(currentReelsPage, pages - 1));
+            const start = currentReelsPage * visible;
+            reelCards.forEach((card, index) => {
+                card.hidden = index < start || index >= start + visible;
+            });
+            reelsPrev.disabled = currentReelsPage === 0;
+            reelsNext.disabled = currentReelsPage === pages - 1;
+            reelsPage.textContent = `${currentReelsPage + 1} / ${pages}`;
+        }
+
+        function moveReels(direction) {
+            currentReelsPage += direction;
+            renderReelsPage();
+        }
+
+        reelsPrev.addEventListener('click', () => moveReels(-1));
+        reelsNext.addEventListener('click', () => moveReels(1));
+        reelsTrack.addEventListener('keydown', (event) => {
+            if (event.target !== reelsTrack) return;
+            if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+                event.preventDefault();
+                moveReels(event.key === 'ArrowRight' ? 1 : -1);
+            }
+        });
+        window.addEventListener('resize', renderReelsPage);
+        renderReelsPage();
+
         reveal();
         window.addEventListener('scroll', reveal);
         function reveal(){
